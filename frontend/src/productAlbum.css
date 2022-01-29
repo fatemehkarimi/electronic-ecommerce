@@ -1,0 +1,45 @@
+.product-album {
+    display: flex;
+}
+
+.product-album-overview {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.product-album-overview-frame {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #a3a6ac;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+.product-album-overview-frame:hover {
+    cursor: pointer;
+    border-color: orange;
+    box-shadow: 0 0 5px #f4c199;
+}
+
+.product-album-overview-img {
+    max-width: 100%;
+    max-height: 100%;
+    margin: 10px;
+}
+
+.product-album-product-img {
+    width: 80%;
+    height: 100%;
+}
+
+.product-album-product-img > img {
+    display: inline-block;
+    max-width: 100%;
+    max-height: 100%;
+}
