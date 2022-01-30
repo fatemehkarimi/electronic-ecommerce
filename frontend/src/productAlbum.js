@@ -3,7 +3,7 @@ import arrowDownIcon from './icons/arrow-down.png';
 import './productAlbum.css';
 
 function DownButton(props) {
-    return(<div className='product-album-overview-scroll-button-wrapper'>
+    return(<div className='product-album-overview-scroll-button-wrapper' onClick={ props.onClick }>
         <button className='product-album-overview-scroll-button'>
             <img src={ arrowDownIcon }></img>
         </button>
@@ -11,10 +11,6 @@ function DownButton(props) {
 }
 
 function Overview(props) {
-    const handleScroll = () => {
-        
-    }
-
     return (<div className='product-album-overview-wrapper' >
         <div className='product-album-overview'>
             {props.images.map((image) => {
@@ -26,7 +22,6 @@ function Overview(props) {
                     onClick={ () => props.onClick(image.href) } />
                 </div>);
             })}
-            <DownButton onClick={ handleScroll } />
         </div>
     </div>);
 }

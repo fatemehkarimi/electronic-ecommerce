@@ -14,29 +14,16 @@
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;
+    direction: rtl;
 }
 
 .product-album-overview::-webkit-scrollbar {
-    display: none;
+    width: 0.5em;
 }
 
-.product-album-overview-scroll-button-wrapper {
-    display: flex;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    justify-content: center;
-}
-
-.product-album-overview-scroll-button {
-    width: 70%;
-    background-color: white;
-    border: none;
-    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.7);
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border-bottom: none;
+.product-album-overview::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 1em;
 }
 
 .product-album-overview-frame {
