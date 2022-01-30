@@ -1,5 +1,7 @@
 .product-album {
     display: flex;
+    width: 100%;
+    height: 100%;
 }
 
 .product-album-overview-wrapper {
@@ -48,7 +50,6 @@
 
 .product-album-product-img {
     width: 80%;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

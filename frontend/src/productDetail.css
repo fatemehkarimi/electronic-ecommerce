@@ -1,4 +1,12 @@
-.product-detail-album {
-    width: 40em;
-    height: 40em;
+.product-detail {
+    display: flex;
+    height: 80vh;
+}
+
+.product-detail-left-col {
+    width: 35%;
+}
+
+.product-detail-middle-col {
+    width: 40%;
 }

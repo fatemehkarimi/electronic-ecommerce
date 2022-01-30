@@ -43,7 +43,7 @@ function ProductAlbum(props) {
             }
     }
 
-    return (<div className={ `product-album ${ props.className }` }>
+    return (<div className={ `product-album ` }>
         <Overview
             className={ `${ props.className }` }
             images={ props.images }
