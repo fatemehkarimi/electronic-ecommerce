@@ -1,0 +1,9 @@
+.review {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.review > img {
+    width: 1.5em;
+}

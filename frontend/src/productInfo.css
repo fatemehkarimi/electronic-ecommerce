@@ -17,3 +17,7 @@
 .product-info-description {
     text-align: justify;
 }
+
+.product-info-user-review-wrapper {
+    width: 100%;
+}

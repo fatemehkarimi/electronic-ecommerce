@@ -1,4 +1,5 @@
 import React from 'react';
+import Review from './review';
 import './productInfo.css';
 
 function Banner(props) {
@@ -24,7 +25,9 @@ function ProductDescription(props) {
 function ProductInfo(props) {
     return (<div className='product-info'>
         <Banner name={ props.info.name } />
-        {/* <Review value={ props.info.customerReviewAverage } /> */}
+        <div className='product-info-user-review-wrapper'>
+            <Review value={ props.info.customerReviewAverage } />
+        </div>
         <hr />
         <ProductPrice price={ props.info.regularPrice  } />
         <ProductDescription description={ props.info.longDescription } />
