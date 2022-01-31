@@ -1,5 +1,6 @@
 import React from 'react';
 import Review from './review';
+import ProductFeature from './productFeature';
 import './productInfo.css';
 
 function Banner(props) {
@@ -21,8 +22,27 @@ function ProductDescription(props) {
     </div>);
 }
 
-
 function ProductInfo(props) {
+    const getFeatures = () => {
+        var features = {};
+        features['Model number'] = props.info.modelNumber;
+        features['Brand'] = props.info.manufacturer;
+        features['Color'] = props.info.color;
+        features['Depth'] = props.info.depth;
+        features['Height'] = props.info.height;
+        features['Weight'] = props.info.weight;
+        features['Width'] = props.info.width;
+        features['Display'] = props.info.displayType;
+        features['Operating system'] = props.info.mobileOperatingSystem;
+        features['Service provider'] = props.info.serviceProvider;
+        features['Included components'] = [];
+
+        for(var i in props.info.includedItemList)
+            features['Included components']
+            .push(props.info.includedItemList[i].includedItem);
+        return features;
+    }
+
     return (<div className='product-info'>
         <Banner name={ props.info.name } />
         <div className='product-info-user-review-wrapper'>
@@ -31,6 +51,7 @@ function ProductInfo(props) {
         <hr />
         <ProductPrice price={ props.info.regularPrice  } />
         <ProductDescription description={ props.info.longDescription } />
+        <ProductFeature features={ getFeatures() } />
     </div>);
 }
 

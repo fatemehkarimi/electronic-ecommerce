@@ -1,0 +1,19 @@
+.product-feature-title {
+    font-weight: bold;
+    padding-right: 1em;
+    width: 8em;
+}
+
+.product-feature {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-feature a {
+    color: #1798d1;
+    text-decoration: none;
+}
+
+.product-feature a:hover {
+    text-decoration: underline;
+}
