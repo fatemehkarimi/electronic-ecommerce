@@ -8,6 +8,10 @@ function ProductFeature(props) {
         setExpanded(!expanded);
     }
 
+    Object.keys(props.features).forEach(key => {
+        if(props.features[key] == undefined)
+            delete props.features[key];
+    });
     return (<div className='product-feature'>
         <table>
             { Object.keys(props.features).slice(0, expanded ? props.features.length : 6).map((title) => {

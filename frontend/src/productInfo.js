@@ -35,6 +35,8 @@ function ProductInfo(props) {
         features['Display'] = props.info.displayType;
         features['Operating system'] = props.info.mobileOperatingSystem;
         features['Service provider'] = props.info.serviceProvider;
+        features['Energy consumption Kwh per year'] = props.info.energyConsumptionKwhPerYear;
+        features['TV type'] = props.info.tvType;
         features['Included components'] = [];
 
         for(var i in props.info.includedItemList)
