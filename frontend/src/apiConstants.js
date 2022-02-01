@@ -1,0 +1,1 @@
+export const _PRODUCT_IDENTITY_KEY_ = "sku";

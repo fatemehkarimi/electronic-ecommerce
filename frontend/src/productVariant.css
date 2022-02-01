@@ -1,0 +1,17 @@
+.product-variant {
+    margin: 1.5em 0;
+}
+
+.product-variant-dropdown-wrapper {
+    display:flex;
+    flex-direction: column;
+}
+
+.product-variant-header {
+    font-weight: bold;
+    margin: 0.3em 0;
+}
+
+.product-variant-dropdown {
+    padding: 1em;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import Review from './review';
 import ProductFeature from './productFeature';
+import ProductVariant from './productVariant';
 import './productInfo.css';
 
 function Banner(props) {
@@ -45,6 +46,30 @@ function ProductInfo(props) {
         return features;
     }
 
+    const getVariations = () => {
+        if(props.info.productVariations.length == 0)
+            return undefined;
+        
+        var variants = [];
+        props.info.productVariations.forEach(variant => {
+            const extractVariant = (item) => {
+                var feature = item.name.split(':')[1];
+                var value = item.value;
+                return [feature, value];
+            }
+
+            var result = {};
+            result['sku'] = variant.sku;
+            
+            for(let i = 0; i < variant.variations.length; ++i) {
+                var [feature, value] = extractVariant(variant.variations[i]); 
+                result[feature] = value;
+            }
+            variants.push(result);
+        });
+        return variants;
+    }
+
     return (<div className='product-info'>
         <Banner name={ props.info.name } />
         <div className='product-info-user-review-wrapper'>
@@ -52,8 +77,9 @@ function ProductInfo(props) {
         </div>
         <hr />
         <ProductPrice price={ props.info.regularPrice  } />
-        <ProductDescription description={ props.info.longDescription } />
+        <ProductVariant current={ props.info.sku } variants={ getVariations() } />
         <ProductFeature features={ getFeatures() } />
+        <ProductDescription description={ props.info.longDescription } />
     </div>);
 }
 
