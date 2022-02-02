@@ -21,6 +21,15 @@
     justify-content: space-between;
 }
 
+.product-variant-dropdown-hidden {
+    padding: 1em;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
 .product-variant-dropdown:hover {
     cursor: pointer;
 }
@@ -28,6 +37,7 @@
 .product-variant-dropdown-option-wrapper {
     position: absolute;
     border: 1px solid #a3a6ac;
+    border-radius: 4px;
     top: 0;
     left: 0;
     background-color: #fff;
@@ -39,6 +49,10 @@
 .product-variant-dropdown-option {
     font-size: 120%;
     padding: 0.4em;
+}
+
+.product-variant-dropdown-option:hover {
+    cursor: default;
 }
 
 .product-variant-dropdown-option:hover {

@@ -22,7 +22,8 @@ function DropDown(props) {
 
     return (<div className="product-variant-dropdown-wrapper">
         <span className="product-variant-header">{props.header}</span>
-        <div tabindex="0" className="product-variant-dropdown"
+        <div tabindex="0"
+            className={ `${isOpen ? 'product-variant-dropdown-hidden' : 'product-variant-dropdown'}` }
             onClick={ handleDropdownClick } onBlur={ (e) => setIsOpen(false) } >
             <div>
                 <span>{ selectedValue }</span>
