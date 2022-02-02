@@ -14,4 +14,39 @@
 
 .product-variant-dropdown {
     padding: 1em;
+    border: 1px solid #a3a6ac;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-variant-dropdown:hover {
+    cursor: pointer;
+}
+
+.product-variant-dropdown-option-wrapper {
+    position: absolute;
+    border: 1px solid #a3a6ac;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.product-variant-dropdown-option {
+    font-size: 120%;
+    padding: 0.4em;
+}
+
+.product-variant-dropdown-option:hover {
+    background-color: #f0f2f4;
+    border: 1px solid #125cbe;
+}
+
+.product-variant-dropdown-open-button {
+    background-color: transparent;
+    border: none;
 }
