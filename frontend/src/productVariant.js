@@ -87,8 +87,6 @@ function ProductVariant(props) {
         selected[header] = option;
         delete selected[_PRODUCT_IDENTITY_KEY_];
 
-        console.log("looking for ", selected);
-
         var newSelectedVariant = getProductIdentity(selected);
         if(newSelectedVariant != null)
             setSelectedVariant(newSelectedVariant);
@@ -97,7 +95,6 @@ function ProductVariant(props) {
     }
 
     useEffect(() => {
-        console.log("selectedVariant = ", selectedVariant);
         props.onProductVariantChange(selectedVariant);
     }, [selectedVariant]);
 

@@ -2,6 +2,7 @@ import React from 'react';
 import Review from './review';
 import ProductFeature from './productFeature';
 import ProductVariant from './productVariant';
+import { _PRODUCT_IDENTITY_KEY_ } from "./apiConstants";
 import './productInfo.css';
 
 function Banner(props) {
@@ -59,7 +60,7 @@ function ProductInfo(props) {
             }
 
             var result = {};
-            result['sku'] = variant.sku;
+            result[_PRODUCT_IDENTITY_KEY_] = variant[_PRODUCT_IDENTITY_KEY_];
             
             for(let i = 0; i < variant.variations.length; ++i) {
                 var [feature, value] = extractVariant(variant.variations[i]); 
@@ -71,7 +72,7 @@ function ProductInfo(props) {
     }
 
     const handleProductVariantChange = (productKey) => {
-        console.log("here in product info");
+        props.onProductVariantChange(productKey);
     }
 
     return (<div className='product-info'>
