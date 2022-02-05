@@ -70,6 +70,10 @@ function ProductInfo(props) {
         return variants;
     }
 
+    const handleProductVariantChange = (productKey) => {
+        console.log("here in product info");
+    }
+
     return (<div className='product-info'>
         <Banner name={ props.info.name } />
         <div className='product-info-user-review-wrapper'>
@@ -77,7 +81,10 @@ function ProductInfo(props) {
         </div>
         <hr />
         <ProductPrice price={ props.info.regularPrice  } />
-        <ProductVariant current={ props.info.sku } variants={ getVariations() } />
+        <ProductVariant
+         current={ props.info.sku }
+         variants={ getVariations() }
+         onProductVariantChange={ handleProductVariantChange } />
         <ProductFeature features={ getFeatures() } />
         <ProductDescription description={ props.info.longDescription } />
     </div>);

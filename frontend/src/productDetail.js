@@ -1,5 +1,5 @@
 import ProductAlbum from "./productAlbum";
-import productData from "./6009674";
+import productData from "./5706647";
 import ProductInfo from "./productInfo";
 import './productDetail.css';
 

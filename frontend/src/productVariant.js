@@ -1,51 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import DropDown from './dropdown';
 import { capitalize } from './utils';
 import { _PRODUCT_IDENTITY_KEY_ } from "./apiConstants";
 import "./productVariant.css";
-import arrowDownIcon from './icons/arrow-down.png';
 
-function DropDown(props) {
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedValue, setSelectedValue] = useState(props.options[props.default]);
 
-    const handleDropdownClick = () => {
-        setIsOpen(!isOpen);
+function DropDownWithTitle(props) {
+    const handleSelect = (option) => {
+        props.onSelect(props.header, option);
     }
 
-    const handleSelectedOption = (option) => {
-        for(var i = 0; i < props.options.length; ++i)
-            if(props.options[i] == option) {
-                setSelectedValue(option);
-                break;
-            }
-    }
-
-    return (<div className="product-variant-dropdown-wrapper">
-        <span className="product-variant-header">{props.header}</span>
-        <div tabindex="0"
-            className={ `${isOpen ? 'product-variant-dropdown-hidden' : 'product-variant-dropdown'}` }
-            onClick={ handleDropdownClick } onBlur={ (e) => setIsOpen(false) } >
-            <div>
-                <span>{ selectedValue }</span>
-            </div>
-            {isOpen &&
-            <div className='product-variant-dropdown-option-wrapper'>
-                { props.options.map((option) => {
-                    return(<div onClick={ (e) => handleSelectedOption(option) }
-                            className="product-variant-dropdown-option">
-                        <span>{ option }</span>
-                    </div>);
-                })}
-            </div>}
-            <button className='product-variant-dropdown-open-button' >
-                <img src={ arrowDownIcon } />
-            </button>
-        </div>
+    return(<div className='product-variant-dropdown-with-title'>
+        <span className='product-variant-dropdown-with-title-header'>
+            { capitalize(props.header.replace('_', ' ')) }
+        </span>
+        <DropDown
+         options={ props.options }
+         default={ props.default }
+         onSelect={ handleSelect }
+        />
     </div>);
 }
 
+
 function ProductVariant(props) {
+    const [selectedVariant, setSelectedVariant] = useState(props.current);
+
     const getHeaders = () => {
+        if(props.variants == null)
+            return [];
+
         var result = [];
         props.variants.forEach((item) => {
             Object.keys(item).forEach((key) => {
@@ -68,13 +52,63 @@ function ProductVariant(props) {
         return result;
     }
 
+    const getSelectedOption = (header) => {
+        for(var i in props.variants)
+            if(props.variants[i][_PRODUCT_IDENTITY_KEY_] == selectedVariant)
+                return props.variants[i][header];
+    }
+
+    const getSelectedVariantObject = () => {
+        for(var i in props.variants) {
+            if(props.variants[i][_PRODUCT_IDENTITY_KEY_] == selectedVariant)
+                return Object.assign({}, props.variants[i]);
+        }
+    }
+
+    const getProductIdentity = (variantConfig) => {
+        for(var i in props.variants) {
+            var keys = Object.keys(variantConfig);
+            var found = true;
+
+            for(var j in keys) {
+                if(props.variants[i][keys[j]] != variantConfig[keys[j]]) {
+                    found = false;
+                    break;
+                }
+            }
+
+            if(found)
+                return props.variants[i][_PRODUCT_IDENTITY_KEY_];
+        }
+    }
+
+    const handleSelect = (header, option) => {
+        var selected = getSelectedVariantObject();
+        selected[header] = option;
+        delete selected[_PRODUCT_IDENTITY_KEY_];
+
+        console.log("looking for ", selected);
+
+        var newSelectedVariant = getProductIdentity(selected);
+        if(newSelectedVariant != null)
+            setSelectedVariant(newSelectedVariant);
+        else // TODO: object must be found
+            console.log("Object not found. fix it");
+    }
+
+    useEffect(() => {
+        console.log("selectedVariant = ", selectedVariant);
+        props.onProductVariantChange(selectedVariant);
+    }, [selectedVariant]);
+
     return(<div className="product-variant">
         {
             getHeaders().map((header) => {
-                return(<DropDown
-                        header={ capitalize(header.replace('_', ' ')) }
+                return(<DropDownWithTitle
+                        header={ header }
                         options={ getHeaderOptions(header) }
-                        default={ 0 } />);
+                        default={ getSelectedOption(header) }
+                        onSelect={ handleSelect } />);
             })
         }
     </div>);
