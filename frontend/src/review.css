@@ -7,3 +7,12 @@
 .review > img {
     width: 1.5em;
 }
+
+.review > span {
+    color: #125cbe;
+}
+
+.review-value {
+    margin-left: 5px;
+    font-weight: bold;
+}

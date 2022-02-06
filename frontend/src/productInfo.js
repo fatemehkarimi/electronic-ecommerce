@@ -78,7 +78,9 @@ function ProductInfo(props) {
     return (<div className='product-info'>
         <Banner name={ props.info.name } />
         <div className='product-info-user-review-wrapper'>
-            <Review value={ props.info.customerReviewAverage } />
+            <Review
+             value={ props.info.customerReviewAverage }
+             countReview={ props.info.customerReviewCount } />
         </div>
         <hr />
         <ProductPrice price={ props.info.regularPrice  } />
