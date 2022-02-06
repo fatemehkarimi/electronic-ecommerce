@@ -112,6 +112,7 @@ function ProductVariant(props) {
             getHeaders().map((header) => {
                 return(<DropDownWithTitle
                         header={ header }
+                        key={ getSelectedOption(header) }
                         options={ getHeaderOptions(header) }
                         default={ getSelectedOption(header) }
                         onSelect={ handleSelect } />);

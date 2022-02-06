@@ -14,17 +14,19 @@ function ProductFeature(props) {
     });
     return (<div className='product-feature'>
         <table>
-            { Object.keys(props.features).slice(0, expanded ? props.features.length : 6).map((title) => {
-                if(!props.features[title])
-                    return;
-                return(<tr>
-                    <td className='product-feature-title'>{ title } </td>
-                    <td>
-                        { Array.isArray(props.features[title]) ?
-                          props.features[title].join(", ")
-                          : props.features[title] }</td>
-                </tr>);
-            })}
+            <tbody>
+                { Object.keys(props.features).slice(0, expanded ? props.features.length : 6).map((title) => {
+                    if(!props.features[title])
+                        return;
+                    return(<tr key={ title }>
+                        <td className='product-feature-title'>{ title } </td>
+                        <td>
+                            { Array.isArray(props.features[title]) ?
+                            props.features[title].join(", ")
+                            : props.features[title] }</td>
+                    </tr>);
+                })}
+            </tbody>
         </table>
         <span>
             <a href="#" onClick={ handleClick }>{ expanded ? "See less" : "See more" }</a>

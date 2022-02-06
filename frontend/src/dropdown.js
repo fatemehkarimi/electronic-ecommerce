@@ -17,7 +17,7 @@ function DropDown(props) {
     }
 
     return (<div className="dropdown-wrapper">
-        <div tabindex="0"
+        <div tabIndex="0"
             className={ `${isOpen ? 'dropdown-hidden' : 'dropdown'}` }
             onClick={ handleDropdownClick } onBlur={ (e) => setIsOpen(false) } >
             <div>
@@ -26,7 +26,8 @@ function DropDown(props) {
             {isOpen &&
             <div className='dropdown-option-wrapper'>
                 { props.options.map((option) => {
-                    return(<div onClick={ (e) => handleSelectedOption(option) }
+                    return(<div key={ option }
+                        onClick={ (e) => handleSelectedOption(option) }
                             className="dropdown-option">
                         <span>{ option }</span>
                     </div>);

@@ -14,12 +14,14 @@ function Overview(props) {
     return (<div className='product-album-overview-wrapper' >
         <div className='product-album-overview'>
             {props.images.map((image) => {
-                return (<div className="product-album-overview-frame"> 
-                <img
-                    className='product-album-overview-img'
-                    src={ image.href }
-                    alt={ image.rel }
-                    onClick={ () => props.onClick(image.href) } />
+                return (
+                <div key={ image.rel }
+                 className="product-album-overview-frame"> 
+                    <img
+                        className='product-album-overview-img'
+                        src={ image.href }
+                        alt={ image.rel }
+                        onClick={ () => props.onClick(image.href) } />
                 </div>);
             })}
         </div>
