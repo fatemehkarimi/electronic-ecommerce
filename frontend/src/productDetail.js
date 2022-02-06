@@ -25,7 +25,8 @@ function ProductDetail(props) {
                     onProductVariantChange={ handleProductChange } />
                 </div>
             </>
-            : <></>
+            :
+            <div>Loading</div>
         }
     </div>);
 }

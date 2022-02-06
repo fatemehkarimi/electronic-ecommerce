@@ -45,8 +45,21 @@ function ProductVariant(props) {
 
     const getHeaderOptions = (header) => {
         var result = [];
+        var currentConfig = {};
+        var headers = getHeaders();
+
+        for(let i = 0; headers[i] != header; ++i)
+            currentConfig[headers[i]] = getSelectedOption(headers[i]);
+
         props.variants.forEach((item) => {
-            if(!result.includes(item[header]))
+            var compatible = true;
+            for(let i = 0; headers[i] != header; ++i)
+                if(currentConfig[headers[i]] != item[headers[i]]) {
+                    compatible = false;
+                    break;
+                }
+
+            if(compatible && !result.includes(item[header]))
                 result.push(item[header]);
         })
         return result;
@@ -56,13 +69,6 @@ function ProductVariant(props) {
         for(var i in props.variants)
             if(props.variants[i][_PRODUCT_IDENTITY_KEY_] == selectedVariant)
                 return props.variants[i][header];
-    }
-
-    const getSelectedVariantObject = () => {
-        for(var i in props.variants) {
-            if(props.variants[i][_PRODUCT_IDENTITY_KEY_] == selectedVariant)
-                return Object.assign({}, props.variants[i]);
-        }
     }
 
     const getProductIdentity = (variantConfig) => {
@@ -83,9 +89,12 @@ function ProductVariant(props) {
     }
 
     const handleSelect = (header, option) => {
-        var selected = getSelectedVariantObject();
+        var headers = getHeaders();
+        var selected = {};
+        for(let i = 0; headers[i] != header; ++i)
+            selected[headers[i]] = getSelectedOption(headers[i]);
+
         selected[header] = option;
-        delete selected[_PRODUCT_IDENTITY_KEY_];
 
         var newSelectedVariant = getProductIdentity(selected);
         if(newSelectedVariant != null)
