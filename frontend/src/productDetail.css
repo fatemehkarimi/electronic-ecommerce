@@ -1,12 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped&family=Open+Sans&display=swap');
+
+
 .product-detail {
+    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+    padding: 0 3em;
+}
+
+.product-detail-info {
     display: flex;
-    height: 80vh;
 }
 
 .product-detail-left-col {
     width: 35%;
+    height: 80vh;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 1em;
 }
 
 .product-detail-middle-col {
     width: 40%;
+}
+
+.product-detail-also-viewed-wrapper {
+    padding: 0.5em;
 }

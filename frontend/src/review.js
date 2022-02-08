@@ -19,7 +19,13 @@ function Review(props) {
         <img src={ getSource(4) } />
         <img src={ getSource(5) } />
         <span className='review-value'>{ props.value }</span>
-        <span>({props.countReview} Reviews)</span>
+        {
+            props.short
+            ?
+            <span>({ props.countReview })</span>
+            :
+            <span>({props.countReview} Reviews)</span>
+        }
     </div>);
 }
 
