@@ -4,23 +4,26 @@ import './globalStyle.css';
 import './productCarousel.css';
 import arrowDownIcon from './icons/arrow-down.png';
 
-function ProductCard(props) {
+function ProductCard({ product }) {
     return (<div className='product-carousel-product-card'>
         <div className='product-carousel-product-card-img-wrapper'>
-            <img src={ arrowDownIcon }></img>
+            <img src={ product['image'] }></img>
         </div>
         <div className='product-carousel-product-card-info'>
             <div className='product-carousel-product-card-title'>
                 <a href='#'>
-                    MacBook Pro 13.3" Laptop - Apple M1 chip - 8GB Memory - 512GB SSD (Latest Model) - Space Gray
+                    { product['longDescription'] }
                 </a>
             </div>
             <div className='product-carousel-product-card-review-wrapper'>
-                <Review value='5' short='true' countReview='21' />
+                <Review
+                 value={ product['customerReviewAverage'] }
+                 countReview={ product['customerReviewCount'] }
+                 short='true' />
             </div>
             <div className='product-carousel-product-card-price'>
                 <span className='price-symbol'>$</span>
-                <span>1500</span>
+                <span>{ product['regularPrice'] }</span>
             </div>
         </div>
     </div>);
@@ -32,12 +35,12 @@ function ProductCarousel(props) {
             <img src={ arrowDownIcon }/>
         </button>
         <div className='product-carousel-image-container'>
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            <ProductCard product={ props.products[0] } />
+            <ProductCard product={ props.products[1] } />
+            <ProductCard product={ props.products[2] } />
+            <ProductCard product={ props.products[3] } />
+            <ProductCard product={ props.products[4] } />
+            <ProductCard product={ props.products[5] } />
         </div>
         <button className='product-carousel-button product-carousel-next-button'>
             <img src={ arrowDownIcon }/>
