@@ -1,29 +1,39 @@
 import React from 'react';
 import Review from './review';
+import {
+    PRODUCT_IDENTITY_KEY,
+    PRODUCT_CUSTOMER_REVIEW_AVERAGE,
+    PRODUCT_CUSTOMER_REVIEW_COUNT,
+    PRODUCT_REGULAR_PRICE,
+    PRODUCT_NAME,
+    PRODUCT_STANDARD_IMAGE
+} from './productConstants';
+
 import './globalStyle.css';
 import './productCarousel.css';
+
 import arrowDownIcon from './icons/arrow-down.png';
 
 function ProductCard({ product }) {
     return (<div className='product-carousel-product-card'>
         <div className='product-carousel-product-card-img-wrapper'>
-            <img src={ product['image'] }></img>
+            <img src={ product[PRODUCT_STANDARD_IMAGE] }></img>
         </div>
         <div className='product-carousel-product-card-info'>
             <div className='product-carousel-product-card-title'>
                 <a href='#'>
-                    { product['longDescription'] }
+                    { product[PRODUCT_NAME] }
                 </a>
             </div>
             <div className='product-carousel-product-card-review-wrapper'>
                 <Review
-                 value={ product['customerReviewAverage'] }
-                 countReview={ product['customerReviewCount'] }
+                 value={ product[PRODUCT_CUSTOMER_REVIEW_AVERAGE] }
+                 countReview={ product[PRODUCT_CUSTOMER_REVIEW_COUNT] }
                  short='true' />
             </div>
             <div className='product-carousel-product-card-price'>
                 <span className='price-symbol'>$</span>
-                <span>{ product['regularPrice'] }</span>
+                <span>{ product[PRODUCT_REGULAR_PRICE] }</span>
             </div>
         </div>
     </div>);

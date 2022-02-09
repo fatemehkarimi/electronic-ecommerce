@@ -3,11 +3,11 @@ import ProductAlbum from "./productAlbum";
 import ProductInfo from "./productInfo";
 import ProductAlsoViewed from './productAlsoViewed';
 import { useProductDetailFetch } from './hooks/useProductDetailFetch';
-import { _PRODUCT_IDENTITY_KEY_ } from './apiConstants';
+import APIConst from './apiConstants';
 import './productDetail.css';
 
 function ProductDetail(props) {
-    const [productKey, setProductKey] = useState('5721600');
+    const [productKey, setProductKey] = useState('6483641');
     const {product, loading, error} = useProductDetailFetch(productKey);
 
     const handleProductChange = (productKey) => {
@@ -35,7 +35,7 @@ function ProductDetail(props) {
         <div className='product-detail-also-viewed-wrapper'>
             {   product &&
                 <ProductAlsoViewed
-                productKey={ product[_PRODUCT_IDENTITY_KEY_] } />
+                productKey={ product[APIConst.PRODUCT_IDENTITY_KEY] } />
             }
         </div>
     </div>);

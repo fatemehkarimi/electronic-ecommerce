@@ -11,8 +11,8 @@ export const useProductDetailFetch = (productKey) => {
             setError(false);
             setLoading(true);
 
-            const productInfo = await API.fetchProduct(productKey);
-            setProduct(productInfo);
+            const result = await API.fetchProduct(productKey);
+            setProduct(result);
         } catch(error) {
             setError(true);
         }

@@ -2,7 +2,7 @@ import React from 'react';
 import Review from './review';
 import ProductFeature from './productFeature';
 import ProductVariant from './productVariant';
-import { _PRODUCT_IDENTITY_KEY_ } from "./apiConstants";
+import APIConst from "./apiConstants";
 import './productInfo.css';
 
 function Banner(props) {
@@ -60,7 +60,7 @@ function ProductInfo(props) {
             }
 
             var result = {};
-            result[_PRODUCT_IDENTITY_KEY_] = variant[_PRODUCT_IDENTITY_KEY_];
+            result[APIConst.PRODUCT_IDENTITY_KEY] = variant[APIConst.PRODUCT_IDENTITY_KEY];
             
             for(let i = 0; i < variant.variations.length; ++i) {
                 var [feature, value] = extractVariant(variant.variations[i]); 
