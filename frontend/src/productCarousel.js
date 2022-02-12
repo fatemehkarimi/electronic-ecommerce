@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import Review from './review';
 import {
     PRODUCT_IDENTITY_KEY,
@@ -16,18 +17,20 @@ import arrowDownIcon from './icons/arrow-down.png';
 
 function ProductCard({ product }) {
     return (<div className='product-carousel-product-card'>
-        <div className='product-carousel-product-card-img-wrapper'>
-            <img src={ product[PRODUCT_STANDARD_IMAGE] }></img>
-        </div>
+            <Link to={ `/product/${product[PRODUCT_IDENTITY_KEY]}` }>
+                <div className='product-carousel-product-card-img-wrapper'>
+                    <img src={ product[PRODUCT_STANDARD_IMAGE] } />
+                </div>
+            </Link>
         <div className='product-carousel-product-card-info'>
             <div className='product-carousel-product-card-title'>
-                <a href='#'>
+                <Link to={ `/product/${product[PRODUCT_IDENTITY_KEY]}` }>
                     { 
                         product[PRODUCT_NAME].length > 40
                         ? product[PRODUCT_NAME].slice(0, 40) + '...'
                         : product[PRODUCT_NAME]
                     }
-                </a>
+                </Link>
             </div>
             <div className='product-carousel-product-card-review-wrapper'>
                 <Review

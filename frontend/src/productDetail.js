@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
+import  { useNavigate, useParams } from 'react-router-dom';
+import APIConst from './apiConstants';
 import ProductAlbum from "./productAlbum";
 import ProductInfo from "./productInfo";
 import ProductAlsoViewed from './productAlsoViewed';
 import { useProductDetailFetch } from './hooks/useProductDetailFetch';
-import APIConst from './apiConstants';
 import './productDetail.css';
 
 function ProductDetail(props) {
-    const [productKey, setProductKey] = useState('6494426');
-    const {product, loading, error} = useProductDetailFetch(productKey);
+    const navigate = useNavigate();
+    const { productId } = useParams();
+    const {product, loading, error} = useProductDetailFetch(productId);
 
     const handleProductChange = (productKey) => {
-        setProductKey(productKey);
+        const path = `/product/${productKey}`;
+        navigate(path);
     }
 
     return (<div className='product-detail'>
@@ -35,7 +38,7 @@ function ProductDetail(props) {
         <div className='product-detail-also-viewed-wrapper'>
             {   product &&
                 <ProductAlsoViewed
-                productKey={ product[APIConst.PRODUCT_IDENTITY_KEY] } />
+                productKey={ productId } />
             }
         </div>
     </div>);
