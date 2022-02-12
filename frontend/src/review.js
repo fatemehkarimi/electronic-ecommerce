@@ -24,7 +24,9 @@ function Review(props) {
             ?
             <span>({ props.countReview })</span>
             :
-            <span>({props.countReview} Reviews)</span>
+            <span>{ props.countReview > 0
+                    ?`(${props.countReview} Reviews)`
+                    : 'No review' }</span>
         }
     </div>);
 }
