@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import Review from './review';
 import {
     PRODUCT_IDENTITY_KEY,
@@ -22,7 +22,11 @@ function ProductCard({ product }) {
         <div className='product-carousel-product-card-info'>
             <div className='product-carousel-product-card-title'>
                 <a href='#'>
-                    { product[PRODUCT_NAME] }
+                    { 
+                        product[PRODUCT_NAME].length > 40
+                        ? product[PRODUCT_NAME].slice(0, 40) + '...'
+                        : product[PRODUCT_NAME]
+                    }
                 </a>
             </div>
             <div className='product-carousel-product-card-review-wrapper'>
@@ -40,19 +44,44 @@ function ProductCard({ product }) {
 }
 
 function ProductCarousel(props) {
+    const carouselSize = 6;
+    const [leftIndex, setLeftIndex] = useState(0);
+
+    const moveNext = (e) => {
+        if(leftIndex + carouselSize < props.products.length)
+            setLeftIndex(leftIndex + carouselSize);
+        else
+            setLeftIndex(0);
+    }
+
+    const movePrevious = (e) => {
+        if(leftIndex - carouselSize >= 0)
+            setLeftIndex(leftIndex - carouselSize);
+        else
+            setLeftIndex(
+                Math.floor(props.products.length / carouselSize) * carouselSize);
+    }
+
     return (<div className='product-carousel'>
-        <button className='product-carousel-button product-carousel-prev-button'>
+        <button
+         className='product-carousel-button product-carousel-prev-button'
+         onClick={ movePrevious }>
             <img src={ arrowDownIcon }/>
         </button>
         <div className='product-carousel-image-container'>
-            <ProductCard product={ props.products[0] } />
-            <ProductCard product={ props.products[1] } />
-            <ProductCard product={ props.products[2] } />
-            <ProductCard product={ props.products[3] } />
-            <ProductCard product={ props.products[4] } />
-            <ProductCard product={ props.products[5] } />
+            {
+                props.products
+                .slice(
+                    leftIndex,
+                    Math.min(props.products.length, leftIndex +carouselSize))
+                    .map(p => (
+                    <ProductCard key={ p[PRODUCT_NAME] } product={ p } />
+                ))
+            }
         </div>
-        <button className='product-carousel-button product-carousel-next-button'>
+        <button
+         className='product-carousel-button product-carousel-next-button'
+         onClick={ moveNext }>
             <img src={ arrowDownIcon }/>
         </button>
     </div>);

@@ -37,7 +37,7 @@
     color: black;
     width: 100%;
     margin: 0 0.5em;
-    height: 300px;
+    height: 320px;
 }
 
 .product-carousel-product-card {
@@ -66,12 +66,10 @@
 
 .product-carousel-product-card-info {
     padding: 0 1em;
-    /* max-height: 50%; */
 }
 
 .product-carousel-product-card-title {
     overflow: hidden;
-    /* max-height: 60%; */
 }
 
 .product-carousel-product-card-title > a {

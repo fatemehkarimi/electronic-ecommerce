@@ -7,7 +7,7 @@ import APIConst from './apiConstants';
 import './productDetail.css';
 
 function ProductDetail(props) {
-    const [productKey, setProductKey] = useState('6483641');
+    const [productKey, setProductKey] = useState('6494426');
     const {product, loading, error} = useProductDetailFetch(productKey);
 
     const handleProductChange = (productKey) => {
