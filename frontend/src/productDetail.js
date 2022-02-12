@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import  { useNavigate, useParams } from 'react-router-dom';
-import APIConst from './apiConstants';
 import ProductAlbum from "./productAlbum";
 import ProductInfo from "./productInfo";
-import ProductAlsoViewed from './productAlsoViewed';
 import { useProductDetailFetch } from './hooks/useProductDetailFetch';
 import './productDetail.css';
+
+const LazyAlsoViewed = React.lazy(() => {
+    const p = new Promise((resolve) => {
+        setTimeout(() => {
+            return resolve(import('./productAlsoViewed'));
+        })
+    }, 3000);
+    return p;
+});
+
 
 function ProductDetail(props) {
     const navigate = useNavigate();
@@ -37,8 +45,10 @@ function ProductDetail(props) {
         </div>
         <div className='product-detail-also-viewed-wrapper'>
             {   product &&
-                <ProductAlsoViewed
-                productKey={ productId } />
+                <Suspense fallback={ <div>Loading...</div> }>
+                    <LazyAlsoViewed
+                    productKey={ productId } />
+                </Suspense>
             }
         </div>
     </div>);

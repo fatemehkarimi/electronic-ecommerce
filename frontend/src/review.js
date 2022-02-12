@@ -26,7 +26,7 @@ function Review(props) {
             :
             <span>{ props.countReview > 0
                     ?`(${props.countReview} Reviews)`
-                    : 'No review' }</span>
+                    : 'Not yet reviewed' }</span>
         }
     </div>);
 }
