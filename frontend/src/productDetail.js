@@ -2,6 +2,7 @@ import React, { useState, Suspense } from 'react';
 import  { useNavigate, useParams } from 'react-router-dom';
 import ProductAlbum from "./productAlbum";
 import ProductInfo from "./productInfo";
+import Spinner from './components/spinner';
 import { useProductDetailFetch } from './hooks/useProductDetailFetch';
 import './productDetail.css';
 
@@ -45,7 +46,7 @@ function ProductDetail(props) {
         </div>
         <div className='product-detail-also-viewed-wrapper'>
             {   product &&
-                <Suspense fallback={ <div>Loading...</div> }>
+                <Suspense fallback={ <Spinner /> }>
                     <LazyAlsoViewed
                     productKey={ productId } />
                 </Suspense>
