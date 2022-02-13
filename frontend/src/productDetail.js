@@ -15,6 +15,15 @@ const LazyAlsoViewed = React.lazy(() => {
     return p;
 });
 
+const LazyAlsoBought = React.lazy(() => {
+    const p = new Promise((resolve) => {
+        setTimeout(() => {
+            return resolve(import('./productAlsoBought'));
+        })
+    }, 6000);
+    return p;
+});
+
 
 function ProductDetail(props) {
     const navigate = useNavigate();
@@ -48,7 +57,15 @@ function ProductDetail(props) {
             {   product &&
                 <Suspense fallback={ <Spinner /> }>
                     <LazyAlsoViewed
-                    productKey={ productId } />
+                     productKey={ productId } />
+                </Suspense>
+            }
+        </div>
+        <div className='product-detail-also-bought-wrapper'>
+            {   product &&
+                <Suspense fallback={ <Spinner /> }>
+                    <LazyAlsoBought
+                     productKey={ productId } />
                 </Suspense>
             }
         </div>

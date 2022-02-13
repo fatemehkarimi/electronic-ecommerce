@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Review from './review';
 import {
     PRODUCT_IDENTITY_KEY,
@@ -77,7 +77,7 @@ function ProductCarousel(props) {
                     leftIndex,
                     Math.min(props.products.length, leftIndex +carouselSize))
                     .map(p => (
-                    <ProductCard key={ p[PRODUCT_NAME] } product={ p } />
+                    <ProductCard key={ p[PRODUCT_IDENTITY_KEY] } product={ p } />
                 ))
             }
         </div>

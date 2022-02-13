@@ -10,5 +10,10 @@ export default {
         const endpoint =
         `/${ APIConst.PRODUCTS_URL }/${ productKey }/${ APIConst.ALSO_VIEWED_URL }?apiKey=${ APIConst.API_KEY }`;
         return await (await fetch(endpoint)).json();
+    },
+    fetchAlsoBought: async(productKey) => {
+        const endpoint = 
+        `/${ APIConst.PRODUCTS_URL }/${ productKey }/${ APIConst.ALSO_BOUGHT_URL }?apiKey=${ APIConst.API_KEY }`;
+        return await (await fetch(endpoint)).json();
     }
 };
