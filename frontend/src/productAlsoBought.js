@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProductCarousel from "./productCarousel";
 import { useAlsoBoughtFetch } from "./hooks/useAlsoBoughtFetch";
 import './productAlsoBought.css';
 
-function ProductAlsoBought({productKey}) {
+function ProductAlsoBought({ productKey, onEmpty }) {
     const { products, loading, error } = useAlsoBoughtFetch(productKey);
+
+    useEffect(() => {
+        if(error || (products && products.length == 0))
+            onEmpty(true);
+    }, [error, products, onEmpty]);
 
   return <>{
       products && products.length > 0 ?

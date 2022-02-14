@@ -21,6 +21,11 @@ export const useAlsoBoughtFetch = (productKey) => {
                 setError(false);
     
                 const result = await API.fetchAlsoBought(productKey);
+                if('errorCode' in result) {
+                    setError(true);
+                    return;
+                }
+
                 var alsoBoughtInfo = [];
                 result['results'].forEach((item) => {
                     var productInfo = {};

@@ -3,8 +3,13 @@ import ProductCarousel from './productCarousel';
 import { useAlsoViewedFetch } from './hooks/useAlsoViewedFetch';
 import './productAlsoViewed.css';
 
-function ProductAlsoViewed({ productKey }) {
+function ProductAlsoViewed({ productKey, onEmpty }) {
     const { products, loading, error } = useAlsoViewedFetch(productKey);
+
+    useEffect(() => {
+        if(error || (products && products.length == 0))
+            onEmpty(true);
+    }, [error, products, onEmpty]);
 
     return (
     <>

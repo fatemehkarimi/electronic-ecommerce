@@ -21,7 +21,11 @@ export const useAlsoViewedFetch = (productKey) => {
                 setLoading(true);
     
                 const result = await API.fetchAlsoViewed(productKey);
-                
+                if('errorCode' in result) {
+                    setError(true);
+                    return;
+                }
+
                 var alsoViewedInfo = [];
                 result['results'].forEach((item) => {
                     var productInfo = {};

@@ -30,6 +30,9 @@ function ProductDetail(props) {
     const { productId } = useParams();
     const {product, loading, error} = useProductDetailFetch(productId);
 
+    const [emptyProductAlsoViewed, setEmptyProductAlsoViewed] = useState(false);
+    const [emptyProductAlsoBought, setEmptyProductAlsoBought] = useState(false);
+
     const handleProductChange = (productKey) => {
         const path = `/product/${productKey}`;
         navigate(path);
@@ -53,22 +56,27 @@ function ProductDetail(props) {
                 <div>Loading</div>
             }
         </div>
-        <div className='product-detail-also-viewed-wrapper'>
-            {   product &&
+        { (product && !emptyProductAlsoViewed) ?
+            <div className='product-detail-also-viewed-wrapper'>
                 <Suspense fallback={ <Spinner /> }>
                     <LazyAlsoViewed
-                     productKey={ productId } />
+                     productKey={ productId }
+                     onEmpty={ setEmptyProductAlsoViewed } />
                 </Suspense>
-            }
-        </div>
-        <div className='product-detail-also-bought-wrapper'>
-            {   product &&
+            </div>
+            : undefined
+        }
+        {
+            product && !emptyProductAlsoBought ?
+            <div className='product-detail-also-bought-wrapper'>
                 <Suspense fallback={ <Spinner /> }>
                     <LazyAlsoBought
-                     productKey={ productId } />
+                        productKey={ productId }
+                        onEmpty={ setEmptyProductAlsoBought } />
                 </Suspense>
-            }
-        </div>
+            </div>
+            : undefined
+        }
     </div>);
 }
 
