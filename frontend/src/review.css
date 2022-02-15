@@ -4,8 +4,9 @@
     height: 100%;
 }
 
-.review > img {
-    width: 1.5em;
+.review-img-wrapper > img {
+    max-width: 1.5em;
+    width: 100%;
 }
 
 .review > span {

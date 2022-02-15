@@ -13,11 +13,21 @@ function Review(props) {
     }
 
     return (<div className='review'>
-        <img src={ getSource(1) } />
-        <img src={ getSource(2) } />
-        <img src={ getSource(3) } />
-        <img src={ getSource(4) } />
-        <img src={ getSource(5) } />
+        <div className='review-img-wrapper'>
+            <img src={ getSource(1) } />
+        </div>
+        <div className='review-img-wrapper'>
+            <img src={ getSource(2) } />
+        </div>
+        <div className='review-img-wrapper'>
+            <img src={ getSource(3) } />
+        </div>
+        <div className='review-img-wrapper'>
+            <img src={ getSource(4) } />
+        </div>
+        <div className='review-img-wrapper'>
+            <img src={ getSource(5) } />
+        </div>
         <span className='review-value'>{ props.value }</span>
         {
             props.short

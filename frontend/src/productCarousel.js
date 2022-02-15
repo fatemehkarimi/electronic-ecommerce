@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useWindowDimensions } from './hooks/useWindowDimensions';
 import Review from './review';
 import {
     PRODUCT_IDENTITY_KEY,
@@ -46,8 +47,19 @@ function ProductCard({ product }) {
 }
 
 function ProductCarousel(props) {
-    const carouselSize = 6;
+    const {width, height} = useWindowDimensions();
     const [leftIndex, setLeftIndex] = useState(0);
+
+    const calcCarouselSize = useCallback(() => {
+        if(width >= 1600) return 6;
+        if(width >= 1350) return 5;
+        if(width >= 1100) return 4;
+        if(width >= 850)  return 3;
+        if(width >= 600)  return 2;
+        else return 1; 
+    });
+
+    const [carouselSize, setCarouselSize] = useState(calcCarouselSize());
 
     const moveNext = (e) => {
         if(leftIndex + carouselSize < props.products.length)
@@ -63,6 +75,11 @@ function ProductCarousel(props) {
             setLeftIndex(
                 Math.floor(props.products.length / carouselSize) * carouselSize);
     }
+
+    useEffect(() => {
+        const size = calcCarouselSize();
+        setCarouselSize(size);
+    }, [calcCarouselSize, setCarouselSize]);
 
     return (<div className='product-carousel'>
         <button
