@@ -5,7 +5,7 @@ import ProductAlbum from "./productAlbum";
 import ProductInfo from "./productInfo";
 import BuyBox from './buyBox';
 import Spinner from './components/spinner';
-import APIConst from './apiConstants';
+import PConst from './productConstants';
 import './productDetail.css';
 
 const LazyAlsoViewed = React.lazy(() => {
@@ -46,7 +46,7 @@ function ProductDetail(props) {
                 product ?
                 <>
                     <div className="product-detail-left-col">
-                        <ProductAlbum images={ product.images } />
+                        <ProductAlbum images={ product[PConst.PRODUCT_IMAGES] } />
                     </div>
                     <div className="product-detail-middle-col">
                         <ProductInfo
@@ -56,7 +56,7 @@ function ProductDetail(props) {
                     <div className='product-detail-right-col'>
                         <BuyBox
                          shipping={ product }
-                         price={ product.regularPrice } />
+                         price={ product[PConst.PRODUCT_REGULAR_PRICE] } />
                     </div>
                 </>
                 :

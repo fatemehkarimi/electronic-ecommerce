@@ -28,12 +28,9 @@ export default {
     PRODUCT_SHIPPING_LEVEL_PRICE: 'shippingLevelPrice',
     PRODUCT_SHIPPING_WEIGHT: 'shippingWeight',
     // Variations
-    PRODUCT_VARIATIONS: 'variations',
+    PRODUCT_VARIATIONS: 'productVariations',
     // Product specific
     PRODUCT_DISPLAY_TYPE: 'displayType',
-    PRODUCT_OPERATING_SYSTEM: 'operatingSystem',
+    PRODUCT_OPERATING_SYSTEM: 'mobileOperatingSystem',
     PRODUCT_SERVICE_PROVIDER: 'serviceProvider',
 };
-
-
-

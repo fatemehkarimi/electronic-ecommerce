@@ -27,32 +27,32 @@ function ProductDescription(props) {
 function ProductInfo(props) {
     const getFeatures = () => {
         var features = {};
-        features['Model number'] = props.info.modelNumber;
-        features['Brand'] = props.info.manufacturer;
-        features['Color'] = props.info.color;
-        features['Depth'] = props.info.depth;
-        features['Height'] = props.info.height;
-        features['Weight'] = props.info.weight;
-        features['Width'] = props.info.width;
-        features['Display'] = props.info.displayType;
-        features['Operating system'] = props.info.mobileOperatingSystem;
-        features['Service provider'] = props.info.serviceProvider;
+        features['Model number'] = props.info[PConst.PRODCUT_MODEL_NUMBER];
+        features['Brand'] = props.info[PConst.PRODUCT_MANUFACTURER];
+        features['Color'] = props.info[PConst.PRODUCT_COLOR];
+        features['Depth'] = props.info[PConst.PRODUCT_DEPTH];
+        features['Height'] = props.info[PConst.PRODUCT_HEIGHT];
+        features['Weight'] = props.info[PConst.PRODCUT_WEIGHT];
+        features['Width'] = props.info[PConst.PRODUCT_WIDTH];
+        features['Display'] = props.info[PConst.PRODUCT_DISPLAY_TYPE];
+        features['Operating system'] = props.info[PConst.PRODUCT_OPERATING_SYSTEM];
+        features['Service provider'] = props.info[PConst.PRODUCT_SERVICE_PROVIDER];
         features['Energy consumption Kwh per year'] = props.info.energyConsumptionKwhPerYear;
         features['TV type'] = props.info.tvType;
         features['Included components'] = [];
 
-        for(var i in props.info.includedItemList)
+        for(var i in props.info[PConst.PRODUCT_INCLUDED_ITEM_LIST])
             features['Included components']
-            .push(props.info.includedItemList[i].includedItem);
+            .push(props.info[PConst.PRODUCT_INCLUDED_ITEM_LIST][i].includedItem);
         return features;
     }
 
     const getVariations = () => {
-        if(props.info.productVariations.length == 0)
+        if(props.info[PConst.PRODUCT_VARIATIONS].length == 0)
             return undefined;
         
         var variants = [];
-        props.info.productVariations.forEach(variant => {
+        props.info[PConst.PRODUCT_VARIATIONS].forEach(variant => {
             const extractVariant = (item) => {
                 var feature = item.name.split(':')[1];
                 var value = item.value;
@@ -79,17 +79,17 @@ function ProductInfo(props) {
         <Banner name={ props.info.name } />
         <div className='product-info-user-review-wrapper'>
             <Review
-             value={ props.info.customerReviewAverage }
-             countReview={ props.info.customerReviewCount } />
+             value={ props.info[PConst.PRODUCT_CUSTOMER_REVIEW_AVERAGE] }
+             countReview={ props.info[PConst.PRODUCT_CUSTOMER_REVIEW_COUNT] } />
         </div>
         <hr />
-        <ProductPrice price={ props.info.regularPrice  } />
+        <ProductPrice price={ props.info[PConst.PRODUCT_REGULAR_PRICE]  } />
         <ProductVariant
-         current={ props.info.sku }
+         current={ props.info[PConst.PRODUCT_IDENTITY_KEY] }
          variants={ getVariations() }
          onProductVariantChange={ handleProductVariantChange } />
         <ProductFeature features={ getFeatures() } />
-        <ProductDescription description={ props.info.longDescription } />
+        <ProductDescription description={ props.info[PConst.PRODUCT_LONG_DESCRIPTION] } />
     </div>);
 }
 
