@@ -1,13 +1,6 @@
 import { useState, useEffect } from 'react';
 import API from '../API';
-import {
-    PRODUCT_IDENTITY_KEY,
-    PRODUCT_CUSTOMER_REVIEW_AVERAGE,
-    PRODUCT_CUSTOMER_REVIEW_COUNT,
-    PRODUCT_REGULAR_PRICE,
-    PRODUCT_NAME,
-    PRODUCT_STANDARD_IMAGE
-} from '../productConstants';
+import PConst from '../productConstants';
 
 export const useAlsoBoughtFetch = (productKey) => {
     const [products, setProducts] = useState();
@@ -29,12 +22,12 @@ export const useAlsoBoughtFetch = (productKey) => {
                 var alsoBoughtInfo = [];
                 result['results'].forEach((item) => {
                     var productInfo = {};
-                    productInfo[PRODUCT_IDENTITY_KEY] = item['sku'];
-                    productInfo[PRODUCT_CUSTOMER_REVIEW_AVERAGE] = item['customerReviews']['averageScore'];
-                    productInfo[PRODUCT_CUSTOMER_REVIEW_COUNT] = item['customerReviews']['count'];
-                    productInfo[PRODUCT_REGULAR_PRICE] = item['prices']['regular'];
-                    productInfo[PRODUCT_NAME] = item['names']['title'];
-                    productInfo[PRODUCT_STANDARD_IMAGE] = item['images']['standard'];
+                    productInfo[PConst.PRODUCT_IDENTITY_KEY] = item['sku'];
+                    productInfo[PConst.PRODUCT_CUSTOMER_REVIEW_AVERAGE] = item['customerReviews']['averageScore'];
+                    productInfo[PConst.PRODUCT_CUSTOMER_REVIEW_COUNT] = item['customerReviews']['count'];
+                    productInfo[PConst.PRODUCT_REGULAR_PRICE] = item['prices']['regular'];
+                    productInfo[PConst.PRODUCT_NAME] = item['names']['title'];
+                    productInfo[PConst.PRODUCT_STANDARD_IMAGE] = item['images']['standard'];
 
                     alsoBoughtInfo.push(productInfo);
                 });

@@ -1,14 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useWindowDimensions } from './hooks/useWindowDimensions';
 import Review from './review';
-import {
-    PRODUCT_IDENTITY_KEY,
-    PRODUCT_CUSTOMER_REVIEW_AVERAGE,
-    PRODUCT_CUSTOMER_REVIEW_COUNT,
-    PRODUCT_REGULAR_PRICE,
-    PRODUCT_NAME,
-    PRODUCT_STANDARD_IMAGE
-} from './productConstants';
+import PConst from './productConstants';
 
 import './globalStyle.css';
 import './productCarousel.css';
@@ -17,30 +10,30 @@ import arrowDownIcon from './icons/arrow-down.png';
 
 function ProductCard({ product }) {
     return (<div className='product-carousel-product-card'>
-            <a href={ `/product/${product[PRODUCT_IDENTITY_KEY]}` }>
+            <a href={ `/product/${product[PConst.PRODUCT_IDENTITY_KEY]}` }>
                 <div className='product-carousel-product-card-img-wrapper'>
-                    <img src={ product[PRODUCT_STANDARD_IMAGE] } />
+                    <img src={ product[PConst.PRODUCT_STANDARD_IMAGE] } />
                 </div>
             </a>
         <div className='product-carousel-product-card-info'>
             <div className='product-carousel-product-card-title'>
-                <a href={ `/product/${product[PRODUCT_IDENTITY_KEY]}` }>
+                <a href={ `/product/${product[PConst.PRODUCT_IDENTITY_KEY]}` }>
                     { 
-                        product[PRODUCT_NAME].length > 40
-                        ? product[PRODUCT_NAME].slice(0, 40) + '...'
-                        : product[PRODUCT_NAME]
+                        product[PConst.PRODUCT_NAME].length > 40
+                        ? product[PConst.PRODUCT_NAME].slice(0, 40) + '...'
+                        : product[PConst.PRODUCT_NAME]
                     }
                 </a>
             </div>
             <div className='product-carousel-product-card-review-wrapper'>
                 <Review
-                 value={ product[PRODUCT_CUSTOMER_REVIEW_AVERAGE] }
-                 countReview={ product[PRODUCT_CUSTOMER_REVIEW_COUNT] }
+                 value={ product[PConst.PRODUCT_CUSTOMER_REVIEW_AVERAGE] }
+                 countReview={ product[PConst.PRODUCT_CUSTOMER_REVIEW_COUNT] }
                  short='true' />
             </div>
             <div className='product-carousel-product-card-price'>
                 <span className='price-symbol'>$</span>
-                <span>{ product[PRODUCT_REGULAR_PRICE] }</span>
+                <span>{ product[PConst.PRODUCT_REGULAR_PRICE] }</span>
             </div>
         </div>
     </div>);
@@ -94,7 +87,7 @@ function ProductCarousel(props) {
                     leftIndex,
                     Math.min(props.products.length, leftIndex +carouselSize))
                     .map(p => (
-                    <ProductCard key={ p[PRODUCT_IDENTITY_KEY] } product={ p } />
+                    <ProductCard key={ p[PConst.PRODUCT_IDENTITY_KEY] } product={ p } />
                 ))
             }
         </div>

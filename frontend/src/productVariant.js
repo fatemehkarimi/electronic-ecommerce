@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DropDown from './dropdown';
 import { capitalize } from './utils';
 import APIConst from "./apiConstants";
+import PConst from './productConstants';
 import "./productVariant.css";
 
 
@@ -33,7 +34,7 @@ function ProductVariant(props) {
         var result = [];
         props.variants.forEach((item) => {
             Object.keys(item).forEach((key) => {
-                if(key == APIConst.PRODUCT_IDENTITY_KEY)
+                if(key == PConst.PRODUCT_IDENTITY_KEY)
                     return;
 
                 if(!result.includes(key))
@@ -67,7 +68,7 @@ function ProductVariant(props) {
 
     const getSelectedOption = (header) => {
         for(var i in props.variants)
-            if(props.variants[i][APIConst.PRODUCT_IDENTITY_KEY] == selectedVariant)
+            if(props.variants[i][PConst.PRODUCT_IDENTITY_KEY] == selectedVariant)
                 return props.variants[i][header];
     }
 
@@ -84,7 +85,7 @@ function ProductVariant(props) {
             }
 
             if(found)
-                return props.variants[i][APIConst.PRODUCT_IDENTITY_KEY];
+                return props.variants[i][PConst.PRODUCT_IDENTITY_KEY];
         }
     }
 

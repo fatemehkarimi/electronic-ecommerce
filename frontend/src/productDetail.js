@@ -1,9 +1,11 @@
 import React, { useState, Suspense } from 'react';
 import  { useNavigate, useParams } from 'react-router-dom';
+import { useProductDetailFetch } from './hooks/useProductDetailFetch';
 import ProductAlbum from "./productAlbum";
 import ProductInfo from "./productInfo";
+import BuyBox from './buyBox';
 import Spinner from './components/spinner';
-import { useProductDetailFetch } from './hooks/useProductDetailFetch';
+import APIConst from './apiConstants';
 import './productDetail.css';
 
 const LazyAlsoViewed = React.lazy(() => {
@@ -50,6 +52,11 @@ function ProductDetail(props) {
                         <ProductInfo
                         info={ product }
                         onProductVariantChange={ handleProductChange } />
+                    </div>
+                    <div className='product-detail-right-col'>
+                        <BuyBox
+                         shipping={ product }
+                         price={ product.regularPrice } />
                     </div>
                 </>
                 :
