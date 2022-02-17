@@ -7,7 +7,10 @@ function PlanOption({ plan }) {
         <label
          className='ticky-radio-button-container'
          htmlFor={ plan[PConst.WARRANTY_ID] }>
-            <input type='radio' id={ plan[PConst.WARRANTY_ID] } />
+            <input
+             type='radio'
+             id={ plan[PConst.WARRANTY_ID] }
+             name='plan-option' />
             <span className='ticky-radio-button' ></span>
             <span className='ticky-radio-button-text'>
                 <div className='product-warranty-info'>
