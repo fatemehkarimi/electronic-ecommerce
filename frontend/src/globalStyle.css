@@ -1,3 +1,10 @@
+:root {
+    --add-to-cart-yellow: #ffda44;
+    --product-price-red: #e32200;
+    --product-in-stock: #2c7c1c;
+    --product-out-of-stock: #b12d2d;
+}
+
 .price-symbol {
     position: relative;
     top: -0.3em;

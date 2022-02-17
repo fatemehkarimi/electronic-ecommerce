@@ -40,6 +40,23 @@ function ProductDetail(props) {
         navigate(path);
     }
 
+    const getShippingInfo = (product) => {
+        var result = {};
+        result[PConst.PRODUCT_FREE_SHIPPING] = 
+            product[PConst.PRODUCT_FREE_SHIPPING];
+
+        result[PConst.PRODUCT_SHIPPING_COST] = 
+            product[PConst.PRODUCT_SHIPPING_COST];
+
+        result[PConst.PRODUCT_SHIPPING_WEIGHT] = 
+            product[PConst.PRODUCT_SHIPPING_WEIGHT];
+
+        result[PConst.PRODUCT_SHIPPING_LEVELS_OF_SERVICE] = 
+            product[PConst.PRODUCT_SHIPPING_LEVELS_OF_SERVICE];
+        
+        return result;
+    }
+
     return (<div className='product-detail'>
         <div className="product-detail-info">
             {
@@ -55,8 +72,9 @@ function ProductDetail(props) {
                     </div>
                     <div className='product-detail-right-col'>
                         <BuyBox
-                         shipping={ product }
-                         price={ product[PConst.PRODUCT_REGULAR_PRICE] } />
+                         shipping={ getShippingInfo(product) }
+                         price={ product[PConst.PRODUCT_REGULAR_PRICE] }
+                         availability={ product[PConst.PRODUCT_INSTORE_AVAILABILITY] } />
                     </div>
                 </>
                 :

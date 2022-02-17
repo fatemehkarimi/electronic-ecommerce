@@ -23,8 +23,8 @@
 }
 
 .product-detail-right-col {
-    width: 25%;
-    border: 1px solid blue;
+    width: 20%;
+    margin-left: 30px;
 }
 
 .product-detail-also-viewed-wrapper {

@@ -1,5 +1,37 @@
 .buy-box {
-    width: 100%;
     border: 1px solid #a3a6ac;
     border-radius: 8px;
+    padding: 15px;
+}
+
+.buy-box-product-price {
+    color: var(--product-price-red);
+    font-size: 150%;
+    font-weight: 500;
+}
+
+.buy-box-availability {
+    font-weight: 800;
+}
+
+.buy-box-in-stock {
+    color: var(--product-in-stock);
+    font-size: 150%;
+}
+
+.buy-box-out-of-stock {
+    color: var(--product-out-of-stock);
+    font-size: 300%;
+}
+
+.add-to-cart {
+    color: black;
+    display: block;
+    padding: 5px 0;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 30px;
+    border: 1px solid var(--add-to-cart-yellow);
+    background-color: var(--add-to-cart-yellow);
+    font-weight: 120%;
 }

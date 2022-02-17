@@ -8,7 +8,7 @@
 }
 
 .product-info-price-value {
-    color: #e32200;
+    color: var(--product-price-red);
     font-weight: 700;
 }
 

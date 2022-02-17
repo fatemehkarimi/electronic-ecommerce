@@ -3,5 +3,6 @@ export default {
     PRODUCTS_URL: 'products',
     ALSO_VIEWED_URL: 'alsoViewed',
     ALSO_BOUGHT_URL: 'alsoBought',
+    WARRANTIES_URL: 'warranties',
     API_KEY: process.env.REACT_APP_BESTBUY_API_KEY,
 };
