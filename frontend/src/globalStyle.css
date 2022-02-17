@@ -1,12 +1,61 @@
 :root {
     --add-to-cart-yellow: #ffda44;
+
     --product-price-red: #e32200;
     --product-in-stock: #2c7c1c;
     --product-out-of-stock: #b12d2d;
+    
+    --royal-blue: #125cbe;
+
+    --light-gray: rgba(0, 0, 0, 0.2);
+    --dark-gray: rgba(0, 0, 0, 0.6);
+
 }
 
 .price-symbol {
     position: relative;
     top: -0.3em;
     font-size: 1em;
+}
+
+.ticky-radio-button-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ticky-radio-button-container > input {
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+}
+
+.ticky-radio-button-text {
+    margin: 0.2em 0 0.2em 1em;
+}
+
+.ticky-radio-button {
+    height: 15px;
+    width: 15px;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 3px solid var(--dark-gray);
+}
+
+.ticky-radio-button-container:hover > input ~ .ticky-radio-button {
+    border: 3px solid var(--royal-blue);
+}
+
+.ticky-radio-button-container > input:checked ~ .ticky-radio-button {
+    background-color: var(--royal-blue);
+    background-position: right;
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-image: url('./icons/white-tick.png');
+    border: 3px solid var(--royal-blue);
 }

@@ -72,6 +72,7 @@ function ProductDetail(props) {
                     </div>
                     <div className='product-detail-right-col'>
                         <BuyBox
+                         productKey={ productId }
                          shipping={ getShippingInfo(product) }
                          price={ product[PConst.PRODUCT_REGULAR_PRICE] }
                          availability={ product[PConst.PRODUCT_INSTORE_AVAILABILITY] } />

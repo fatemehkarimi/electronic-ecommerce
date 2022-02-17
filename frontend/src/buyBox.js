@@ -1,4 +1,5 @@
 import React from 'react';
+import ProductWarranty from './productWarranty';
 import PConst from './productConstants';
 import './buyBox.css';
 
@@ -11,7 +12,7 @@ function Price({price}) {
     );
 }
 
-function Delivary({isFree, cost}) {
+function Delivary({ isFree, cost }) {
     return (
     <div>
         {
@@ -26,7 +27,7 @@ function Delivary({isFree, cost}) {
     );
 }
 
-function Availability({available}) {
+function Availability({ available }) {
     return (
         <div className='buy-box-availability'>
             <span className={ available ? 'buy-box-in-stock' : 'buy-box-out-of-stock' }>
@@ -36,14 +37,14 @@ function Availability({available}) {
     );
 }
 
-
-function BuyBox({shipping, price, availability}) {
+function BuyBox({ productKey, shipping, price, availability }) {
     return (<div className='buy-box'>
         <Price price={ price } />
         <Delivary
          isFree={ shipping[PConst.PRODUCT_FREE_SHIPPING] }
          cost={ shipping[PConst.PRODUCT_SHIPPING_COST] } />
         <Availability available={ availability } />
+        <ProductWarranty productKey={ productKey }/>
         <a className='add-to-cart' href='#'>Add to Cart</a>
     </div>);
 }

@@ -27,7 +27,7 @@ export const useProductDetailFetch = (productKey) => {
 }
 
 export const useProductWarrantyFetch = (productKey) => {
-    const [warranty, setWarranty] = useState();
+    const [warranty, setWarranty] = useState([]);
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
 

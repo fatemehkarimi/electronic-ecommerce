@@ -18,6 +18,7 @@ export default {
     PRODUCT_LONG_DESCRIPTION: 'longDescription',
     PRODUCT_INCLUDED_ITEM_LIST: 'includedItemList',
     PRODUCT_INSTORE_AVAILABILITY: 'inStoreAvailability',
+
     // Shipping
     PRODUCT_SHIPPING: 'shipping',
     PRODUCT_SHIPPING_COST: 'shippingCost',
@@ -26,10 +27,26 @@ export default {
     PRODUCT_SHIPPING_SERVICE_LEVEL_NAME: 'serviceLevelName',
     PRODUCT_SHIPPING_UNIT_SHIPPING_PRICE: 'unitShippingPrice',
     PRODUCT_SHIPPING_WEIGHT: 'shippingWeight',
+
     // Variations
     PRODUCT_VARIATIONS: 'productVariations',
+
     // Product specific
     PRODUCT_DISPLAY_TYPE: 'displayType',
     PRODUCT_OPERATING_SYSTEM: 'mobileOperatingSystem',
     PRODUCT_SERVICE_PROVIDER: 'serviceProvider',
+
+    //Warranty
+    WARRANTY_ID: 'skuId',
+    WARRANTY_SHORT_NAME: 'shortName',
+    WARRANTY_SHORT_DESCRIPTION: 'shortDescription',
+    WARRANTY_CURRENT_PRICE: 'currentPrice',
+    WARRANTY_TYPE: 'type',
+    WARRANTY_PROTECTION_TYPE: 'protectionType',
+    WARRANTY_TERM: 'term',
+    WARRANTY_TERM_LENGTH: 'termLength',
+    WARRANTY_VALUE: 'value',
+    WARRANTY_UNIT_OF_MEASURE: 'Years',
+    WARRANTY_MARKETING_HEADLINE: 'marketingHeadline',
+    WARRANTY_IMAGE: 'primaryImagePiscesHref',
 };

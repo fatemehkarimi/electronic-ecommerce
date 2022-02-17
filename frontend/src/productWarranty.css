@@ -1,0 +1,31 @@
+.product-warranty {
+    width: 100%;
+    margin-top: 0.5em;
+    border-top: 1px solid var(--light-gray);
+}
+
+.product-warranty > h2 {
+    margin: 0.6em 0;
+    font-size: 16px;
+}
+
+.product-warranty-option-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-warranty-option {
+    width: 100%;
+    display: flex;
+}
+
+.product-warranty-info {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-column-gap: 1em;
+}
+
+.product-warranty-option-price {
+    color: var(--product-price-red);
+}
