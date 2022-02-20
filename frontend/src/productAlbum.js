@@ -3,6 +3,12 @@ import PConst from './productConstants';
 import './productAlbum.css';
 
 function Overview(props) {
+    const [selectedImage, setSelectedImage] = useState(props.default);
+    const handlSelect = (image) => {
+        setSelectedImage(image);
+        props.onClick(image[PConst.IMAGE_HREF]);
+    }
+
     return (<div className='product-album-overview-wrapper' >
         <div className='product-album-overview'>
             {props.images.map((image) => {
@@ -12,12 +18,14 @@ function Overview(props) {
 
                 return (
                 <div key={ image.rel }
-                 className="product-album-overview-frame"> 
+                 className={ `product-album-overview-frame
+                            ${ image == selectedImage
+                                ? 'product-album-selected' : ''}` }> 
                     <img
                         className='product-album-overview-img'
                         src={ `${ image[PConst.IMAGE_HREF] };maxHeight=67;maxWidth=58` }
                         alt={ image[PConst.IMAGE_REL] }
-                        onClick={ () => props.onClick(image[PConst.IMAGE_HREF]) } />
+                        onClick={ () => handlSelect(image) } />
                 </div>);
             })}
         </div>
@@ -47,7 +55,8 @@ function ProductAlbum(props) {
             images={ props.images }
             onClick={ handleSelectedImage }
             minWidth={ props.minWidth }
-            minHeight={ props.minHeight } />
+            minHeight={ props.minHeight }
+            default={ props.images[selectedImage] } />
         <ProductImg
             alt={ props.images[selectedImage][PConst.IMAGE_REL] }
             src={ props.images[selectedImage][PConst.IMAGE_HREF] } />
