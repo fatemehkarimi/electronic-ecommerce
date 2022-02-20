@@ -1,6 +1,7 @@
 .product-warranty {
     width: 100%;
     margin-top: 0.5em;
+    margin-bottom: 0.5em;
     border-top: 1px solid var(--light-gray);
 }
 
@@ -24,6 +25,11 @@
     justify-content: space-between;
 }
 
+.product-warranty-name {
+    width: 80%;
+}
+
 .product-warranty-option-price {
+    width: 20%;
     color: var(--product-price-red);
 }

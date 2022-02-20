@@ -1,27 +1,23 @@
 import React, { useState } from 'react';
-import arrowDownIcon from './icons/arrow-down.png';
+import PConst from './productConstants';
 import './productAlbum.css';
-
-function DownButton(props) {
-    return(<div className='product-album-overview-scroll-button-wrapper' onClick={ props.onClick }>
-        <button className='product-album-overview-scroll-button'>
-            <img src={ arrowDownIcon }></img>
-        </button>
-    </div>);
-}
 
 function Overview(props) {
     return (<div className='product-album-overview-wrapper' >
         <div className='product-album-overview'>
             {props.images.map((image) => {
+                if(Number(image[PConst.IMAGE_WIDTH]) < Number(props.minWidth)
+                   || Number(image[PConst.IMAGE_HEIGHT]) < Number(props.minHeight))
+                    return;
+
                 return (
                 <div key={ image.rel }
                  className="product-album-overview-frame"> 
                     <img
                         className='product-album-overview-img'
-                        src={ image.href }
-                        alt={ image.rel }
-                        onClick={ () => props.onClick(image.href) } />
+                        src={ `${ image[PConst.IMAGE_HREF] };maxHeight=67;maxWidth=58` }
+                        alt={ image[PConst.IMAGE_REL] }
+                        onClick={ () => props.onClick(image[PConst.IMAGE_HREF]) } />
                 </div>);
             })}
         </div>
@@ -39,7 +35,7 @@ function ProductAlbum(props) {
 
     const handleSelectedImage = (imageLink) => {
         for(let i = 0; i < props.images.length; ++i)
-            if(imageLink == props.images[i].href) {
+            if(imageLink == props.images[i][PConst.IMAGE_HREF]) {
                 setSelectedImage(i);
                 break;
             }
@@ -49,10 +45,12 @@ function ProductAlbum(props) {
         <Overview
             className={ `${ props.className }` }
             images={ props.images }
-            onClick={ handleSelectedImage } />
+            onClick={ handleSelectedImage }
+            minWidth={ props.minWidth }
+            minHeight={ props.minHeight } />
         <ProductImg
-            alt={ props.images[selectedImage].rel }
-            src={ props.images[selectedImage].href } />
+            alt={ props.images[selectedImage][PConst.IMAGE_REL] }
+            src={ props.images[selectedImage][PConst.IMAGE_HREF] } />
     </div>);
 }
 

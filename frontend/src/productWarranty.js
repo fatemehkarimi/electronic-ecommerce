@@ -14,7 +14,7 @@ function PlanOption({ plan }) {
             <span className='ticky-radio-button' ></span>
             <span className='ticky-radio-button-text product-warranty-info'>
                 <div className='product-warranty-info'>
-                    <div>
+                    <div className='product-warranty-name'>
                         { plan[PConst.WARRANTY_SHORT_NAME] }
                     </div>
                     <div className='product-warranty-option-price'>
@@ -30,16 +30,21 @@ function PlanOption({ plan }) {
 function ProductWarranty({ productKey }) {
     const { warranty, loading, error } = useProductWarrantyFetch(productKey);
 
-    return (<div className='product-warranty'>
-        <h2>Add a Protection Plan:</h2>
-        <div className='product-warranty-option-wrapper'>
-            {
-                warranty.map((plan) => {
-                    return <PlanOption key={ plan[PConst.WARRANTY_ID] } plan={ plan } />;
-                })
-            }
-        </div>
-    </div>);
+    return ( <>
+        { !error && warranty && warranty.length > 0 ?
+            <div className='product-warranty'>
+                <h2>Add a Protection Plan:</h2>
+                <div className='product-warranty-option-wrapper'>
+                    { 
+                        warranty.map((plan) => {
+                            return <PlanOption key={ plan[PConst.WARRANTY_ID] } plan={ plan } />;
+                        })
+                    }
+                </div>
+            </div>
+            : undefined
+        }
+    </>);
 }
 
 export default ProductWarranty;

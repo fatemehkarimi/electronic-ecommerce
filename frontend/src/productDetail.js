@@ -63,7 +63,10 @@ function ProductDetail(props) {
                 product ?
                 <>
                     <div className="product-detail-left-col">
-                        <ProductAlbum images={ product[PConst.PRODUCT_IMAGES] } />
+                        <ProductAlbum
+                         images={ product[PConst.PRODUCT_IMAGES] }
+                         minWidth={ 500 }
+                         minHeight={ 500 } />
                     </div>
                     <div className="product-detail-middle-col">
                         <ProductInfo

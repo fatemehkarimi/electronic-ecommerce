@@ -38,6 +38,10 @@ export const useProductWarrantyFetch = (productKey) => {
                 setLoading(true);
 
                 const result = await API.fetchProductWarranty(productKey);
+                if('errorCode' in result) {
+                    setError(true);
+                    return;
+                }
                 setWarranty(result);
             }
             catch(error) {

@@ -36,7 +36,7 @@ export default {
     PRODUCT_OPERATING_SYSTEM: 'mobileOperatingSystem',
     PRODUCT_SERVICE_PROVIDER: 'serviceProvider',
 
-    //Warranty
+    // Warranty
     WARRANTY_ID: 'skuId',
     WARRANTY_SHORT_NAME: 'shortName',
     WARRANTY_SHORT_DESCRIPTION: 'shortDescription',
@@ -49,4 +49,10 @@ export default {
     WARRANTY_UNIT_OF_MEASURE: 'Years',
     WARRANTY_MARKETING_HEADLINE: 'marketingHeadline',
     WARRANTY_IMAGE: 'primaryImagePiscesHref',
+
+    // Images
+    IMAGE_WIDTH: 'width',
+    IMAGE_HEIGHT: 'height',
+    IMAGE_HREF: 'href',
+    IMAGE_REL: 'rel',
 };
