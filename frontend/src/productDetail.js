@@ -13,7 +13,7 @@ const LazyAlsoViewed = React.lazy(() => {
         setTimeout(() => {
             return resolve(import('./productAlsoViewed'));
         })
-    }, 3000);
+    }, 5000);
     return p;
 });
 
@@ -22,7 +22,7 @@ const LazyAlsoBought = React.lazy(() => {
         setTimeout(() => {
             return resolve(import('./productAlsoBought'));
         })
-    }, 6000);
+    }, 10000);
     return p;
 });
 

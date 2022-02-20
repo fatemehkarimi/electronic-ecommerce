@@ -12,7 +12,7 @@ function PlanOption({ plan }) {
              id={ plan[PConst.WARRANTY_ID] }
              name='plan-option' />
             <span className='ticky-radio-button' ></span>
-            <span className='ticky-radio-button-text'>
+            <span className='ticky-radio-button-text product-warranty-info'>
                 <div className='product-warranty-info'>
                     <div>
                         { plan[PConst.WARRANTY_SHORT_NAME] }

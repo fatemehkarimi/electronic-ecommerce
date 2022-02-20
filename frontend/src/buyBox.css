@@ -31,7 +31,7 @@
     text-align: center;
     text-decoration: none;
     border-radius: 30px;
+    font-weight: 120%;
     border: 1px solid var(--add-to-cart-yellow);
     background-color: var(--add-to-cart-yellow);
-    font-weight: 120%;
 }

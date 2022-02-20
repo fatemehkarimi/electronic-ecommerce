@@ -36,3 +36,24 @@
     padding: 0.5em;
     margin: 100px 0;
 }
+
+@media only screen and (max-width: 1000px) {
+    .product-detail-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-detail-left-col {
+        width: 100%;
+        position: inherit;
+    }
+
+    .product-detail-middle-col {
+        width: 100%;
+    }
+
+    .product-detail-right-col {
+        width: 100%;
+        margin: 0;
+    }
+}

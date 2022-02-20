@@ -16,14 +16,12 @@
 
 .product-warranty-option {
     width: 100%;
-    display: flex;
 }
 
 .product-warranty-info {
     width: 100%;
-    display: grid;
-    grid-template-columns: 5fr 1fr;
-    grid-column-gap: 1em;
+    display: flex;
+    justify-content: space-between;
 }
 
 .product-warranty-option-price {
