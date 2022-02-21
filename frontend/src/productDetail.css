@@ -3,7 +3,7 @@
 
 .product-detail {
     font-family: 'IBM Plex Sans Thai Looped', sans-serif;
-    padding: 0 3em;
+    position: relative;
 }
 
 .product-detail-info {
@@ -35,6 +35,20 @@
 .product-detail-also-bought-wrapper {
     padding: 0.5em;
     margin: 100px 0;
+}
+
+.product-detail-loading-cover {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 20%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media only screen and (max-width: 1000px) {

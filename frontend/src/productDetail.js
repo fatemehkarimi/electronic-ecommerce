@@ -8,6 +8,13 @@ import Spinner from './components/spinner';
 import PConst from './productConstants';
 import './productDetail.css';
 
+
+const LoadingCover = () => (
+    <div className='product-detail-loading-cover'>
+        <Spinner />
+    </div>
+);
+
 const LazyAlsoViewed = React.lazy(() => {
     const p = new Promise((resolve) => {
         setTimeout(() => {
@@ -58,6 +65,12 @@ function ProductDetail(props) {
     }
 
     return (<div className='product-detail'>
+        {
+            loading && product ? <LoadingCover /> : undefined
+        }
+        {
+            loading && !product ? <div>Loading</div> : undefined
+        }
         <div className="product-detail-info">
             {
                 product ?
@@ -82,7 +95,7 @@ function ProductDetail(props) {
                     </div>
                 </>
                 :
-                <div>Loading</div>
+                undefined
             }
         </div>
         { (product && !emptyProductAlsoViewed) ?

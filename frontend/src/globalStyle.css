@@ -12,6 +12,12 @@
 
 }
 
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
 .price-symbol {
     position: relative;
     top: -0.3em;
