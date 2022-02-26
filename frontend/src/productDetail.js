@@ -16,21 +16,17 @@ const LoadingCover = () => (
 );
 
 const LazyAlsoViewed = React.lazy(() => {
-    const p = new Promise((resolve) => {
-        setTimeout(() => {
-            return resolve(import('./productAlsoViewed'));
-        })
-    }, 5000);
-    return p;
+    return Promise.all([
+        import('./productAlsoViewed'),
+        new Promise(resolve => setTimeout(resolve, 2000))
+    ]).then(([moduleExports]) => moduleExports);
 });
 
 const LazyAlsoBought = React.lazy(() => {
-    const p = new Promise((resolve) => {
-        setTimeout(() => {
-            return resolve(import('./productAlsoBought'));
-        })
-    }, 10000);
-    return p;
+    return Promise.all([
+        import('./productAlsoBought'),
+        new Promise(resolve => setTimeout(resolve, 3000))
+    ]).then(([moduleExports]) => moduleExports);
 });
 
 
