@@ -1,0 +1,34 @@
+.navbar {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5em;
+    display: flex;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    padding: 0 1em;
+}
+
+.app-logo {
+    max-width: 250px;
+}
+
+.navbar-searchbox-wrapper {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 30px;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .app-logo {
+        max-width: 125px;
+    }
+
+    .navbar-searchbox-wrapper {
+        margin: 0 10px;
+    }
+}
