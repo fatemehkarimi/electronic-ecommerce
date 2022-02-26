@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useWindowDimensions } from './hooks/useWindowDimensions';
-import Review from './review';
+import Review from './components/review/review';
 import PConst from './productConstants';
 
 import './globalStyle.css';

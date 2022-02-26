@@ -4,7 +4,7 @@ import { useProductDetailFetch } from './hooks/useProductDetailFetch';
 import ProductAlbum from "./productAlbum";
 import ProductInfo from "./productInfo";
 import BuyBox from './buyBox';
-import Spinner from './components/spinner';
+import Spinner from './components/spinner/spinner';
 import PConst from './productConstants';
 import './productDetail.css';
 

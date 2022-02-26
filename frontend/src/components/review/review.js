@@ -1,6 +1,6 @@
-import fullStar from './icons/rate-star.png';
-import halfStar from './icons/half-star.png';
-import emptyStar from './icons/empty-star.png';
+import fullStar from './../../icons/rate-star.png';
+import halfStar from './../../icons/half-star.png';
+import emptyStar from './../../icons/empty-star.png';
 import './review.css';
 
 function Review(props) {

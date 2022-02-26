@@ -1,5 +1,5 @@
 import React from 'react';
-import Review from './review';
+import Review from './components/review/review';
 import ProductFeature from './productFeature';
 import ProductVariant from './productVariant';
 import PConst from "./productConstants";

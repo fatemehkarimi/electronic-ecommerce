@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './dropdown.css';
-import arrowDownIcon from './icons/arrow-down.png';
+import arrowDownIcon from './../../icons/arrow-down.png';
 
 
 function DropDown(props) {
