@@ -24,7 +24,6 @@
     background-color: transparent;
     width: 40px;
     border: none;
-    border-left: 1px solid var(--dark-gray);
 }
 
 .search-box-button:hover {
