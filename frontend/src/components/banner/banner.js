@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './banner.css';
+import arrowIcon from './../../icons/arrow-down.png';
 
-import poster1 from './../images/poster1.jpg';
-import poster2 from './../images/poster2.jpg';
-import poster3 from './../images/poster3.jpg';
-
-import arrowIcon from './../icons/arrow-down.png';
-
-const images = [poster1, poster2, poster3];
 
 function Button({ role, handleClick }) {
     const imgStyle = {
@@ -25,13 +19,16 @@ function Button({ role, handleClick }) {
 }
 
 
-function Banner() {
+function Banner({ images, interval }) {
     const [current, setCurrent] = useState(0);
 
     useEffect(() => {
+        if(!images || images.length == 0)
+            return;
+
         const timer = setTimeout(() => {
             setCurrent((current + 1) % images.length);
-        }, 4000);
+        }, interval);
 
         return () => clearTimeout(timer);
     }, [current, images]);
