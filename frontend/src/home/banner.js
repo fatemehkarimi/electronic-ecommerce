@@ -14,17 +14,11 @@ function Button({ role, handleClick }) {
         transform: `rotate(${role == "previous" ? 90 : 270 }deg)`
     };
 
-    const handle = () => {
-        handleClick();
-    }
-
     return (
-        <div tabIndex='0' className='button-wrapper'>
+        <div tabIndex='0' className='button-wrapper' onClick={ handleClick }>
             <img
              style={ imgStyle }
-             className='banner-controller-previous'
              src={ arrowIcon }
-             onClick={ handle }
             />
         </div>
     );
@@ -60,8 +54,7 @@ function Banner() {
                     (image, i) => 
                         <div 
                           className={ `slide ${current == i ? 'active-slide' : ''}` }
-                          key={ i }
-                        >
+                          key={ i }>
                             <img src={ image } />
                         </div>)
             }
