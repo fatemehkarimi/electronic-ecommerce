@@ -17,7 +17,6 @@
 }
 
 .navbar-bottom {
-    border: 1px solid green;
     display: flex;
     margin: 5px 0 0 0;
 }
@@ -37,7 +36,6 @@
 .navbar-hamburger-wrapper {
     display: flex;
     align-items: center;
-    border: 1px solid blue;
 }
 
 .navbar-hamburger-wrapper:hover {
@@ -47,7 +45,7 @@
 .navbar-hamburger-wrapper > span {
     font-weight: bold;
     font-size: 20px;
-    color: #f05400;
+    color: var(--dark-orange);
 }
 
 @media only screen and (max-width: 1000px) {

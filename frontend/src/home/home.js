@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "../navbar";
 import Banner from "../components/banner/banner";
+import TrendingProducts from "../trendingProducts";
 import './home.css';
 import './../globalStyle.css';
 import poster1 from '../images/poster1.jpg';
@@ -21,6 +22,9 @@ function Home() {
             <div className="content-wrapper">
                 <div className="banner-wrapper">
                     <Banner images={ bannerImages } interval={ 3500 } />
+                </div>
+                <div className="home-trending-products-wrapper">
+                    <TrendingProducts />
                 </div>
             </div>
         </div>

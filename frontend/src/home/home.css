@@ -12,7 +12,7 @@
 }
 
 .content-wrapper {
-    border: 1px dashed black;
+    /* border: 1px dashed black; */
     display: flex;
     flex-direction: column;
     margin: 0 200px;
@@ -20,6 +20,10 @@
 
 .banner-wrapper {
     height: 400px;
+}
+
+.home-trending-products-wrapper {
+    margin: 20px 0;
 }
 
 @media only screen and (max-width: 1000px) {

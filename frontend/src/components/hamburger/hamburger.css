@@ -16,6 +16,33 @@
     width: 425px;
     z-index: 100;
     background-color: #ffffff;
-    pointer-events: none;
-    border: 5px solid black;
+    border: 1px solid var(--dark-gray);
+}
+
+.hamburger-extended > ul {
+    padding: 0;
+    margin: 10px;
+    list-style: none;
+}
+
+.hamburger-option {
+    display: block;
+    margin: 0 5px;
+    padding: 5px;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.hamburger-option > a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.hamburger-option:hover {
+    background-color: #f0f2f4;
+}
+
+.hamburger-option:last-child {
+    border: none;
 }

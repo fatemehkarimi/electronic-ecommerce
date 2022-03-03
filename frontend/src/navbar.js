@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Hamburger from './components/hamburger/hamburger';
 import SearchBox from "./components/searchBox/searchBox";
+import API from './API';
 import './navbar.css';
 import logo from './icons/logo.svg';
 
-function BottomNavBar() {
+function BottomNavBar({ menuOptions }) {
     const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
+
     const handleMenuClick =() => {
         setIsHamburgerOpen(!isHamburgerOpen);
     }
@@ -13,7 +15,7 @@ function BottomNavBar() {
     return (
         <div className="navbar-bottom">
             <div className="navbar-hamburger-wrapper" onClick={ handleMenuClick }>
-                <Hamburger isOpen={ isHamburgerOpen } />
+                <Hamburger options={ menuOptions } isOpen={ isHamburgerOpen } />
                 <span>Menu</span>
             </div>
         </div>
@@ -32,10 +34,12 @@ function TopNavBar() {
 }
 
 function NavBar() {
+    const menuOptions = API.categories;
+
     return (
         <div className="navbar">
             <TopNavBar />
-            <BottomNavBar />
+            <BottomNavBar menuOptions={ menuOptions } />
         </div>
     );
 }

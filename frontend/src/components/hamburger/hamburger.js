@@ -3,13 +3,23 @@ import menuIcon from './../../icons/menu.png';
 import closeIcon from './../../icons/close.png';
 import './hamburger.css';
 
-function Menu() {
+function MenuOption({ option }) {
+    return (
+        <li className='hamburger-option'>
+            <a href={ option.path } >
+                { option.name }
+            </a>
+        </li>
+    );
+}
+
+function Menu({ options }) {
     return (
         <div className='hamburger-extended'>
             <ul>
-                <li>Appliances</li>
-                <li>TV & Home Threater</li>
-                <li>Computers & Tablets</li>
+                {
+                    options.map((op) => <MenuOption option={ op } />)
+                }
             </ul>
         </div>
     );
@@ -37,7 +47,7 @@ function Hamburger(props) {
             </div>
             {
                 isOpen
-                ? <Menu />
+                ? <Menu options={ props.options } />
                 : <></>
             }
         </div>
