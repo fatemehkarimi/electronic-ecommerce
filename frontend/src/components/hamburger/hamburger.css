@@ -1,0 +1,21 @@
+.hamburger {
+    position: relative;
+}
+
+.hamburger-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.hamburger-icon:hover {
+    cursor: pointer;
+}
+
+.hamburger-extended {
+    position: absolute;
+    width: 425px;
+    z-index: 100;
+    background-color: #ffffff;
+    pointer-events: none;
+    border: 5px solid black;
+}

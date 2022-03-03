@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped&family=Open+Sans&display=swap');
+
 :root {
     --add-to-cart-yellow: #ffda44;
 
@@ -16,6 +18,7 @@ html, body {
     padding: 0;
     margin: 0;
     height: 100%;
+    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
 }
 
 .price-symbol {
