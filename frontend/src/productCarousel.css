@@ -38,13 +38,13 @@
     width: 100%;
     margin: 0 0.5em;
     height: 320px;
+    flex: 1;
 }
 
 .product-carousel-product-card {
     margin: 0.2rem 0.4rem;
     display: flex;
     flex-direction: column;
-    width: 250px;
 }
 
 .product-carousel-product-card-img-wrapper {
