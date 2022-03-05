@@ -38,7 +38,7 @@ export default {
     },
     fetchProductWarranty: async(productKey) => {
         const endpoint =
-            `/${ APIConst.PRODUCTS_URL }/${ productKey }/${ APIConst.WARRANTIES_URL }.json?apiKey=${APIConst.API_KEY}`;
+            `/${ APIConst.PRODUCTS_URL }/${ productKey }/${ APIConst.WARRANTIES_URL }.json?apiKey=${ APIConst.API_KEY }`;
         return await (await fetch(endpoint)).json();
     },
     fetchAlsoViewed: async(productKey) => {
@@ -52,7 +52,8 @@ export default {
         return await (await fetch(endpoint)).json();
     },
     fetchTrending: async() => {
-        const endpoint = `/${ APIConst.PRODUCTS_URL }/${ APIConst.TRENDING_URL }.json?apiKey=${APIConst.API_KEY}`;
+        const endpoint = 
+        `/${ APIConst.PRODUCTS_URL }/${ APIConst.TRENDING_URL }?apiKey=${ APIConst.API_KEY }`;
         return await (await fetch(endpoint)).json();
     }
 };
