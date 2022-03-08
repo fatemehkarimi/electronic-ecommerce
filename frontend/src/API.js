@@ -55,5 +55,10 @@ export default {
         const endpoint = 
         `/${ APIConst.PRODUCTS_URL }/${ APIConst.TRENDING_URL }?apiKey=${ APIConst.API_KEY }`;
         return await (await fetch(endpoint)).json();
+    },
+    fetchMostViewed: async() => {
+        const endpoint = 
+        `/${ APIConst.PRODUCTS_URL }/${ APIConst.MOST_VIEWED_URL }?apiKey=${ APIConst.API_KEY }`;
+        return await(await fetch(endpoint)).json();
     }
 };

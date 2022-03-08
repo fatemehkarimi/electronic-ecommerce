@@ -45,6 +45,7 @@
     margin: 0.2rem 0.4rem;
     display: flex;
     flex-direction: column;
+    max-width: 250px;
 }
 
 .product-carousel-product-card-img-wrapper {
