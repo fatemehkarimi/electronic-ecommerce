@@ -36,6 +36,10 @@ function TopNavBar() {
 function NavBar() {
     const menuOptions = API.categories;
 
+    menuOptions.forEach((apiOption) => {
+        apiOption.path = `/category/${ apiOption.name }/${ apiOption.id }`;
+    });
+
     return (
         <div className="navbar">
             <TopNavBar />

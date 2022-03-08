@@ -49,8 +49,12 @@
 }
 
 @media only screen and (max-width: 1000px) {
+    .navbar {
+        padding: 0;
+    }
+
     .app-logo {
-        max-width: 125px;
+        max-width: 175px;
     }
 
     .navbar-searchbox-wrapper {

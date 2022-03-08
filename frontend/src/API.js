@@ -3,32 +3,32 @@ import APIConst from './apiConstants';
 export default {
     categories: [
         {
-            'name': 'TV & Home Theater',
-            'path': '#'
+            'id': 'abcat0100000',
+            'name': 'TV & Home Theater'
         },
         {
-            'name': 'Computer & Tablets',
-            'path': '#'
+            'id': 'abcat0500000',
+            'name': 'Computer & Tablets'
         },
         {
-            'name': 'Cameras, Camcoders & Drones',
-            'path': '#'
+            'id': 'abcat0400000',
+            'name': 'Cameras, Camcoders & Drones'
         },
         {
-            'name': 'Cell Phones',
-            'path': '#'
+            'id': 'abcat0800000',
+            'name': 'Cell Phones'
         },
         {
-            'name': 'Audio',
-            'path': '#'
+            'id': 'abcat0200000',
+            'name': 'Audio'
         },
         {
-            'name': 'Video Games',
-            'path': '#'
+            'id': 'abcat0700000',
+            'name': 'Video Games'
         },
         {
-            'name': 'Wearable Technology',
-            'path': '#'
+            'id': 'pcmcat332000050000',
+            'name': 'Wearable Technology'
         }
     ],
     fetchProduct: async(productKey) => {
@@ -59,6 +59,11 @@ export default {
     fetchMostViewed: async() => {
         const endpoint = 
         `/${ APIConst.PRODUCTS_URL }/${ APIConst.MOST_VIEWED_URL }?apiKey=${ APIConst.API_KEY }`;
+        return await(await fetch(endpoint)).json();
+    },
+    fetchProductsOfCategory: async (categoryId, pageNum=1) => {
+        const endpoint =
+        `/${ APIConst.PRODUCTS_URL }(categoryPath.id=${ categoryId })?format=json&page=${ pageNum }&apiKey=${ APIConst.API_KEY }`;
         return await(await fetch(endpoint)).json();
     }
 };
