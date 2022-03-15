@@ -1,0 +1,15 @@
+.category-product-list {
+    
+}
+
+.category-product-list-content {
+    box-sizing: border-box;
+    padding: 0 1em;
+    margin-top: 1em;
+    width: 100%;
+    display: flex;
+}
+
+.category-product-grid-container {
+    width: 80%;
+}
