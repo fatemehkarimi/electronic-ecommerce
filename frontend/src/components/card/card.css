@@ -3,6 +3,7 @@
     flex-direction: column;
     border: 1px solid var(--light-gray);
     border-radius: 4px;
+    height: 100%;
 }
 
 .card:hover {
