@@ -12,6 +12,7 @@
     --light-gray: rgba(0, 0, 0, 0.2);
     --dark-gray: rgba(0, 0, 0, 0.6);
 
+    --light-orange: #f79e6f;
     --dark-orange: #f05400;
 
     --very-light-blue: #f7feff;
@@ -71,4 +72,12 @@ html, body {
     background-repeat: no-repeat;
     background-image: url('./icons/white-tick.png');
     border: 3px solid var(--royal-blue);
+}
+
+.simple-link {
+    all: unset;
+}
+
+.simple-link:hover {
+    cursor: pointer;
 }

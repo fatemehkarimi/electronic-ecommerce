@@ -1,6 +1,4 @@
 import React from 'react';
-import Review from '../review/review';
-import { formatLongString } from '../../utils';
 import "./card.css";
 
 
@@ -11,11 +9,7 @@ function Card(props) {
                 <img src={ props.image } alt="image" />
             </div>
             <div className="card-container">
-                <span>{ formatLongString(props.title) }</span>
-                <Review
-                    countReview={ props.review.countReview }
-                    value={ props.review.value }
-                    short="true" />
+                { props.children }
             </div>
         </div>
     );

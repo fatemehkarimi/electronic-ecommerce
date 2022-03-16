@@ -13,3 +13,8 @@
 .category-product-grid-container {
     width: 80%;
 }
+
+.category-product-list-custom-card-price {
+    font-size: 125%;
+    color: var(--product-price-red);
+}
