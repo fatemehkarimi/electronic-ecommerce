@@ -6,7 +6,11 @@ export const useCategoryProductsFetch = (categoryId, pageNum = 1) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [totalPages, setTotalPages] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+
+  useEffect(() => {
+    setProducts([]);
+  }, [categoryId])
 
   useEffect(() => {
     const fetchCategoryProducts = async (id, pageNum) => {
@@ -36,7 +40,7 @@ export const useCategoryProductsFetch = (categoryId, pageNum = 1) => {
           categoryProducts.push(productInfo);
         });
 
-        setTotalPages(result["totalPages"]);
+        setHasMore(parseInt(result["totalPages"]) > pageNum);
         setProducts(categoryProducts);
       } catch (err) {
         setError(true);
@@ -48,5 +52,5 @@ export const useCategoryProductsFetch = (categoryId, pageNum = 1) => {
     fetchCategoryProducts(categoryId, pageNum);
   }, [categoryId, pageNum]);
 
-  return { products, totalPages, loading, error };
+  return { products, hasMore, loading, error };
 };

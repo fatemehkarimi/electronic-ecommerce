@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { useCategoryProductsFetch } from "../hooks/useCategoryProductsFetch";
 import NavBar from "../navbar";
@@ -29,14 +29,33 @@ function CustomCard({ product }) {
 function CategoryProductList() {
   const { categoryId, categoryName } = useParams();
   const [ currentPage, setCurrentPage ] = useState(1);
-  const { products, totalPages, loading, error } = useCategoryProductsFetch(
+  const { products, hasMore, loading, error } = useCategoryProductsFetch(
     categoryId,
     currentPage
   );
 
   const loadMore = () => {
-    setCurrentPage(currentPage + 1);
+    if(hasMore)
+      setCurrentPage(currentPage + 1);
   }
+
+  const observer = useRef();
+  const lastProductElementRef = useCallback(node => {
+    if(loading)
+      return;
+    
+    if(observer.current)
+      observer.current.disconnect();
+
+    observer.current = new IntersectionObserver(entries => {
+      if(entries[0].isIntersecting) {
+        loadMore();
+      }
+    });
+
+    if(node)
+      observer.current.observe(node);
+  }, [loading, hasMore]);
 
   return (
     <div className="category-product-list">
@@ -45,21 +64,33 @@ function CategoryProductList() {
         <div className="category-product-grid-container">
           <Grid>
             {products && products.length > 0 ? (
-              products.map((item) => {
+              products.map((item, idx) => {
+                if(idx + 1 == products.length)
+                  return (
+                    <a
+                      key={item[PConst.PRODUCT_IDENTITY_KEY]}
+                      className="simple-link"
+                      href={`/product/${item[PConst.PRODUCT_IDENTITY_KEY]}`}
+                      ref={ lastProductElementRef }>
+                      <CustomCard product={item}/>
+                    </a>
+                  );
+
                 return (
                   <a
+                    key={item[PConst.PRODUCT_IDENTITY_KEY]}
                     className="simple-link"
-                    href={`/product/${item[PConst.PRODUCT_IDENTITY_KEY]}`}
-                  >
-                    <CustomCard product={item} />
+                    href={`/product/${item[PConst.PRODUCT_IDENTITY_KEY]}`}>
+                    <CustomCard product={item}/>
                   </a>
                 );
               })
             ) : (
               <></>
             )}
-            <button onClick={ loadMore }>Load More</button>
           </Grid>
+          { loading && <div>Loading...</div> }
+          { error && <div>Error...</div> }
         </div>
         <div>Filter</div>
       </div>
