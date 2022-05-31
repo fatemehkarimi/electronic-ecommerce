@@ -5,6 +5,7 @@ import NavBar from "../navbar";
 import Grid from "../components/grid/grid";
 import Card from "../components/card/card";
 import Review from "../components/review/review";
+import Spinner from "../components/spinner/spinner";
 import { formatLongString } from "./../utils";
 import PConst from "../productConstants";
 import "./categoryProductList.css";
@@ -89,7 +90,7 @@ function CategoryProductList() {
               <></>
             )}
           </Grid>
-          { loading && <div>Loading...</div> }
+          { loading && <Spinner /> }
           { error && <div>Error...</div> }
         </div>
         <div>Filter</div>
