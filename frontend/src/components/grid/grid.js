@@ -1,9 +1,9 @@
 import React from 'react';
 import './grid.css';
 
-function Grid({ children }) {
+function Grid({ children, className }) {
     return (
-        <div className='grid'>
+        <div className={ `grid ${ className }` }>
             { children }
         </div>
     );

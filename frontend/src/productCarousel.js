@@ -2,41 +2,31 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useWindowDimensions } from './hooks/useWindowDimensions';
 import Review from './components/review/review';
 import PConst from './productConstants';
-
-import './globalStyle.css';
-import './productCarousel.css';
-
+import Card from './components/card/card';
+import Grid from './components/grid/grid';
+import { formatLongString } from './utils';
 import arrowDownIcon from './icons/arrow-down.png';
+import './productCarousel.css';
+import './globalStyle.css';
+
 
 function ProductCard({ product }) {
-    return (<div className='product-carousel-product-card'>
-            <a href={ `/product/${product[PConst.PRODUCT_IDENTITY_KEY]}` }>
-                <div className='product-carousel-product-card-img-wrapper'>
-                    <img src={ product[PConst.PRODUCT_STANDARD_IMAGE] } />
-                </div>
-            </a>
-        <div className='product-carousel-product-card-info'>
-            <div className='product-carousel-product-card-title'>
-                <a href={ `/product/${product[PConst.PRODUCT_IDENTITY_KEY]}` }>
-                    { 
-                        product[PConst.PRODUCT_NAME].length > 40
-                        ? product[PConst.PRODUCT_NAME].slice(0, 40) + '...'
-                        : product[PConst.PRODUCT_NAME]
-                    }
-                </a>
-            </div>
-            <div className='product-carousel-product-card-review-wrapper'>
-                <Review
-                 value={ product[PConst.PRODUCT_CUSTOMER_REVIEW_AVERAGE] }
-                 countReview={ product[PConst.PRODUCT_CUSTOMER_REVIEW_COUNT] }
-                 short='true' />
-            </div>
-            <div className='product-carousel-product-card-price'>
-                <span className='price-symbol'>$</span>
-                <span>{ product[PConst.PRODUCT_REGULAR_PRICE] }</span>
-            </div>
+  return (
+    <div className='product-carousel-product-card'>
+      <Card image={ product[PConst.PRODUCT_STANDARD_IMAGE] }>
+        <span>{ formatLongString(product[PConst.PRODUCT_NAME]) }</span>
+        <Review
+          countReview={product[PConst.PRODUCT_CUSTOMER_REVIEW_COUNT]}
+          value={product[PConst.PRODUCT_CUSTOMER_REVIEW_AVERAGE]}
+          short="true"
+        />
+        <div className='product-carousel-product-card-price'>
+          <span className="price-symbol">$</span>
+          <span>{product[PConst.PRODUCT_REGULAR_PRICE]}</span>
         </div>
-    </div>);
+      </Card>
+    </div>
+  );
 }
 
 function ProductCarousel(props) {
@@ -44,11 +34,10 @@ function ProductCarousel(props) {
     const [leftIndex, setLeftIndex] = useState(0);
 
     const calcCarouselSize = useCallback(() => {
-        if(width >= 1600) return 6;
-        if(width >= 1350) return 5;
-        if(width >= 1100) return 4;
-        if(width >= 850)  return 3;
-        if(width >= 600)  return 2;
+        if(width >= 1600) return 5;
+        if(width >= 1350) return 4;
+        if(width >= 1100) return 3;
+        if(width >= 850)  return 2;
         else return 1; 
     });
 
@@ -80,17 +69,21 @@ function ProductCarousel(props) {
          onClick={ movePrevious }>
             <img src={ arrowDownIcon }/>
         </button>
-        <div className='product-carousel-image-container'>
+        <Grid className="product-carousel-grid">
             {
                 props.products
                 .slice(
                     leftIndex,
                     Math.min(props.products.length, leftIndex +carouselSize))
                     .map(p => (
-                    <ProductCard key={ p[PConst.PRODUCT_IDENTITY_KEY] } product={ p } />
+                      <a key={ p[PConst.PRODUCT_IDENTITY_KEY] }
+                        className="simple-link"
+                        href={`/product/${p[PConst.PRODUCT_IDENTITY_KEY]}`}>
+                        <ProductCard product={ p } />
+                      </a>
                 ))
             }
-        </div>
+        </Grid>
         <button
          className='product-carousel-button product-carousel-next-button'
          onClick={ moveNext }>

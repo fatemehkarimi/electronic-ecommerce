@@ -32,21 +32,23 @@ function TrendingProducts() {
 
 
 function MostViewedProducts() {
-    const { products, error, loading } = useMostViewedFetch();
-    if(error) return <></>;
+  const { products, error, loading } = useMostViewedFetch();
+  if(error) return <></>;
 
-    return (
-        <>
-        {
-        products && products.length > 0 ?
-            <div className="home-product-carousel-wrapper">
-                <h2>Most Viewed by People</h2>
-                <ProductCarousel products={ products } />
-            </div>
-            : undefined
-        }
-        </>
-    );
+  return (
+    <>
+    {
+    products && products.length > 0 ?
+      <div className="home-product-carousel-wrapper">
+          <h2>Most Viewed by People</h2>
+          <div>
+            <ProductCarousel products={ products } />
+          </div>
+      </div>
+      : undefined
+    }
+    </>
+  );
 }
 
 
