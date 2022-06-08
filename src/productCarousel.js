@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowDimensions } from './hooks/useWindowDimensions';
 import Review from './components/review/review';
 import PConst from './productConstants';
@@ -33,12 +33,14 @@ function ProductCarousel(props) {
     const {width, height} = useWindowDimensions();
     const [leftIndex, setLeftIndex] = useState(0);
 
+    const gridRef = useRef(null);
+
     const calcCarouselSize = useCallback(() => {
-        if(width >= 1600) return 5;
-        if(width >= 1350) return 4;
-        if(width >= 1100) return 3;
-        if(width >= 850)  return 2;
-        else return 1; 
+        if(gridRef.current) {
+          console.log("result = ", gridRef.current.offsetWidth);
+          return (gridRef.current.offsetWidth / 250) - 1;
+        }
+        return 0;
     });
 
     const [carouselSize, setCarouselSize] = useState(calcCarouselSize());
@@ -69,7 +71,7 @@ function ProductCarousel(props) {
          onClick={ movePrevious }>
             <img src={ arrowDownIcon }/>
         </button>
-        <Grid className="product-carousel-grid">
+        <Grid ref={ gridRef } className="product-carousel-grid">
             {
                 props.products
                 .slice(
