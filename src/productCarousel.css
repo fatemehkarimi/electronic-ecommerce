@@ -37,6 +37,10 @@
     height: 100%;
 }
 
+.product-carousel-grid-wrapper {
+    width: 100%;
+}
+
 .product-carousel-grid {
     grid-auto-flow: column;
     margin: 0 1em;

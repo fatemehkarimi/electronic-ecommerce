@@ -36,34 +36,33 @@ function ProductCarousel(props) {
     const gridRef = useRef(null);
 
     const calcCarouselSize = useCallback(() => {
-        if(gridRef.current) {
-          console.log("result = ", gridRef.current.offsetWidth);
-          return (gridRef.current.offsetWidth / 250) - 1;
-        }
-        return 0;
+      if(gridRef.current == null)
+        return;
+      return (gridRef.current.offsetWidth / 250);
     });
 
     const [carouselSize, setCarouselSize] = useState(calcCarouselSize());
 
     const moveNext = (e) => {
         if(leftIndex + carouselSize < props.products.length)
-            setLeftIndex(leftIndex + carouselSize);
+          setLeftIndex(leftIndex + carouselSize);
         else
-            setLeftIndex(0);
+          setLeftIndex(0);
     }
 
     const movePrevious = (e) => {
         if(leftIndex - carouselSize >= 0)
-            setLeftIndex(leftIndex - carouselSize);
+          setLeftIndex(leftIndex - carouselSize);
         else
-            setLeftIndex(
-                Math.floor(props.products.length / carouselSize) * carouselSize);
+          setLeftIndex(
+              Math.floor(props.products.length / carouselSize) * carouselSize);
     }
 
     useEffect(() => {
-        const size = calcCarouselSize();
-        setCarouselSize(size);
-    }, [calcCarouselSize, setCarouselSize]);
+      const size = calcCarouselSize();
+      setLeftIndex(0);
+      setCarouselSize(size);
+    }, [width]);
 
     return (<div className='product-carousel'>
         <button
@@ -71,21 +70,23 @@ function ProductCarousel(props) {
          onClick={ movePrevious }>
             <img src={ arrowDownIcon }/>
         </button>
-        <Grid ref={ gridRef } className="product-carousel-grid">
-            {
-                props.products
-                .slice(
-                    leftIndex,
-                    Math.min(props.products.length, leftIndex +carouselSize))
-                    .map(p => (
-                      <a key={ p[PConst.PRODUCT_IDENTITY_KEY] }
-                        className="simple-link"
-                        href={`/product/${p[PConst.PRODUCT_IDENTITY_KEY]}`}>
-                        <ProductCard product={ p } />
-                      </a>
-                ))
-            }
-        </Grid>
+        <div ref={ gridRef } className="product-carousel-grid-wrapper">
+          <Grid className="product-carousel-grid">
+              {
+                  props.products
+                  .slice(
+                      leftIndex,
+                      Math.min(props.products.length, leftIndex +carouselSize))
+                      .map(p => (
+                        <a key={ p[PConst.PRODUCT_IDENTITY_KEY] }
+                          className="simple-link"
+                          href={`/product/${p[PConst.PRODUCT_IDENTITY_KEY]}`}>
+                          <ProductCard product={ p } />
+                        </a>
+                  ))
+              }
+          </Grid>
+        </div>
         <button
          className='product-carousel-button product-carousel-next-button'
          onClick={ moveNext }>
