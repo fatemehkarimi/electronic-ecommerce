@@ -28,24 +28,25 @@
     border-radius: 1em;
 }
 
-.product-album-overview-frame {
+.product-album-overview-frame-wrapper {
     border: 1px solid #a3a6ac;
     border-radius: 4px;
-    display: flex;
-    justify-content: center;
-    margin: 0.5em;
-    padding: 0.3em;
+    padding: 3px;
+    margin: 5px;
 }
 
-.product-album-overview-frame:hover {
+.product-album-overview-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65px;
+    height: 65px;
+}
+
+.product-album-overview-frame-wrapper:hover {
     cursor: pointer;
     border-color: orange;
     box-shadow: 0 0 5px #f4c199;
-}
-
-.product-album-overview-img {
-    height: 3em;
-    max-width: 100%;
 }
 
 .product-album-product-img {

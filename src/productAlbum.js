@@ -17,16 +17,18 @@ function Overview(props) {
                     return;
 
                 return (
-                <div key={ image.rel }
-                 className={ `product-album-overview-frame
-                            ${ image == selectedImage
-                                ? 'product-album-selected' : ''}` }> 
-                    <img
-                        className='product-album-overview-img'
-                        src={ `${ image[PConst.IMAGE_HREF] };maxHeight=67;maxWidth=58` }
-                        alt={ image[PConst.IMAGE_REL] }
-                        onClick={ () => handlSelect(image) } />
-                </div>);
+                <div className={ `product-album-overview-frame-wrapper
+                                    ${ image == selectedImage
+                                        ? 'product-album-selected' : '' }` }
+                     onClick={ () => handlSelect(image) } >
+                    <div key={ image.rel }
+                        className='product-album-overview-frame'> 
+                        <img
+                            src={ `${ image[PConst.IMAGE_HREF] };maxHeight=67;maxWidth=58` }
+                            alt={ image[PConst.IMAGE_REL] } />
+                    </div>
+                </div>
+                );
             })}
         </div>
     </div>);
