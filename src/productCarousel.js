@@ -38,7 +38,7 @@ function ProductCarousel(props) {
     const calcCarouselSize = useCallback(() => {
       if(gridRef.current == null)
         return;
-      return (gridRef.current.offsetWidth / 250);
+      return Math.floor(gridRef.current.offsetWidth / 250);
     });
 
     const [carouselSize, setCarouselSize] = useState(calcCarouselSize());
