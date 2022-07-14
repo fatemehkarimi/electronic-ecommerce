@@ -6,46 +6,46 @@ import './navbar.css';
 import logo from './icons/logo.svg';
 
 function BottomNavBar({ menuOptions }) {
-    const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
+  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
 
-    const handleMenuClick =() => {
-        setIsHamburgerOpen(!isHamburgerOpen);
-    }
-
-    return (
-        <div className="navbar-bottom">
-            <div className="navbar-hamburger-wrapper" onClick={ handleMenuClick }>
-                <Hamburger options={ menuOptions } isOpen={ isHamburgerOpen } />
-                <span>Menu</span>
-            </div>
-        </div>
-    );
+  return (
+    <div className="navbar-bottom">
+      <div
+       tabIndex={ 0 }
+       className="navbar-hamburger-wrapper"
+       onClick={ () => setIsHamburgerOpen(!isHamburgerOpen) }
+       onBlur={ () => setIsHamburgerOpen(false) }>
+        <Hamburger options={ menuOptions } isOpen={ isHamburgerOpen } />
+        <span>Menu</span>
+      </div>
+    </div>
+  );
 }
 
 function TopNavBar() {
-    return (
-        <div className="navbar-top">
-            <img className="app-logo" src={ logo } />
-            <div className="navbar-searchbox-wrapper">
-                <SearchBox />
-            </div>
-        </div>
-    );
+  return (
+    <div className="navbar-top">
+      <img className="app-logo" src={ logo } />
+      <div className="navbar-searchbox-wrapper">
+        <SearchBox />
+      </div>
+    </div>
+  );
 }
 
 function NavBar() {
-    const menuOptions = API.categories;
+  const menuOptions = API.categories;
 
-    menuOptions.forEach((apiOption) => {
-        apiOption.path = `/category/${ apiOption.name }/${ apiOption.id }`;
-    });
+  menuOptions.forEach((apiOption) => {
+    apiOption.path = `/category/${ apiOption.name }/${ apiOption.id }`;
+  });
 
-    return (
-        <div className="navbar">
-            <TopNavBar />
-            <BottomNavBar menuOptions={ menuOptions } />
-        </div>
-    );
+  return (
+    <div className="navbar">
+      <TopNavBar />
+      <BottomNavBar menuOptions={ menuOptions } />
+    </div>
+  );
 }
 
 export default NavBar;
