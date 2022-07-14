@@ -1,5 +1,7 @@
 import React, { useState, Suspense } from 'react';
 import  { useNavigate, useParams } from 'react-router-dom';
+import { useAlsoBoughtFetch } from "./hooks/useAlsoBoughtFetch";
+import { useAlsoViewedFetch } from './hooks/useAlsoViewedFetch';
 import { useProductDetailFetch } from './hooks/useProductDetailFetch';
 import ProductAlbum from "./productAlbum";
 import ProductInfo from "./productInfo";
@@ -17,14 +19,14 @@ const LoadingCover = () => (
 
 const LazyAlsoViewed = React.lazy(() => {
     return Promise.all([
-        import('./productAlsoViewed'),
+        import('./fetcherProductCarousel'),
         new Promise(resolve => setTimeout(resolve, 2000))
     ]).then(([moduleExports]) => moduleExports);
 });
 
 const LazyAlsoBought = React.lazy(() => {
     return Promise.all([
-        import('./productAlsoBought'),
+        import('./fetcherProductCarousel'),
         new Promise(resolve => setTimeout(resolve, 3000))
     ]).then(([moduleExports]) => moduleExports);
 });
@@ -95,24 +97,28 @@ function ProductDetail(props) {
             }
         </div>
         { (product && !emptyProductAlsoViewed) ?
-            <div className='product-detail-also-viewed-wrapper'>
-                <Suspense fallback={ <Spinner /> }>
+            <Suspense fallback={ <Spinner /> }>
+                <div className='product-detail-recommends'>
+                    <h2>Customers also viewed these products</h2>
                     <LazyAlsoViewed
-                     productKey={ productId }
-                     onEmpty={ setEmptyProductAlsoViewed } />
-                </Suspense>
-            </div>
+                    fetch={ useAlsoViewedFetch }
+                    productKey={ productId }
+                    onEmpty={ setEmptyProductAlsoViewed } />
+                </div>
+            </Suspense>
             : undefined
         }
         {
             product && !emptyProductAlsoBought ?
-            <div className='product-detail-also-bought-wrapper'>
-                <Suspense fallback={ <Spinner /> }>
+            <Suspense fallback={ <Spinner /> }>
+                <div className='product-detail-recommends'>
+                    <h2>Frequently bought togather</h2>
                     <LazyAlsoBought
-                        productKey={ productId }
-                        onEmpty={ setEmptyProductAlsoBought } />
-                </Suspense>
-            </div>
+                    fetch={ useAlsoBoughtFetch }
+                    productKey={ productId }
+                    onEmpty={ setEmptyProductAlsoBought } />
+                </div>
+            </Suspense>
             : undefined
         }
     </div>);

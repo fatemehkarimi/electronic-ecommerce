@@ -23,14 +23,13 @@
     margin-left: 30px;
 }
 
-.product-detail-also-viewed-wrapper {
+.product-detail-recommends {
     padding: 0.5em;
     margin: 100px 0;
 }
 
-.product-detail-also-bought-wrapper {
-    padding: 0.5em;
-    margin: 100px 0;
+.product-detail-recommends > h2 {
+    color: #c7511f;
 }
 
 .product-detail-loading-cover {

@@ -3,41 +3,45 @@ import PConst from './productConstants';
 import './productAlbum.css';
 
 function Overview(props) {
-    const [selectedImage, setSelectedImage] = useState(props.default);
-    const handlSelect = (image) => {
-        setSelectedImage(image);
-        props.onClick(image[PConst.IMAGE_HREF]);
-    }
+  const [selectedImage, setSelectedImage] = useState(props.default);
+  const handlSelect = (image) => {
+    setSelectedImage(image);
+    props.onClick(image[PConst.IMAGE_HREF]);
+  }
 
-    return (<div className='product-album-overview-wrapper' >
-        <div className='product-album-overview'>
-            {props.images.map((image) => {
-                if(Number(image[PConst.IMAGE_WIDTH]) < Number(props.minWidth)
-                   || Number(image[PConst.IMAGE_HEIGHT]) < Number(props.minHeight))
-                    return;
+  return (
+    <div className='product-album-overview-wrapper' >
+      <div className='product-album-overview'>
+        { props.images.map((image) => {
+            if(Number(image[PConst.IMAGE_WIDTH]) < Number(props.minWidth)
+              || Number(image[PConst.IMAGE_HEIGHT]) < Number(props.minHeight))
+              return;
 
-                return (
-                <div className={ `product-album-overview-frame-wrapper
-                                    ${ image == selectedImage
-                                        ? 'product-album-selected' : '' }` }
-                     onClick={ () => handlSelect(image) } >
-                    <div key={ image.rel }
-                        className='product-album-overview-frame'> 
-                        <img
-                            src={ `${ image[PConst.IMAGE_HREF] };maxHeight=67;maxWidth=58` }
-                            alt={ image[PConst.IMAGE_REL] } />
-                    </div>
+            return (
+              <div
+                key={ image.rel }
+                className={ `product-album-overview-frame-wrapper
+                              ${ image == selectedImage
+                              ? 'product-album-selected' : '' }` }
+                onClick={ () => handlSelect(image) } >
+                <div className='product-album-overview-frame'> 
+                  <img
+                    src={ `${ image[PConst.IMAGE_HREF] };maxHeight=67;maxWidth=58` }
+                    alt={ image[PConst.IMAGE_REL] } />
                 </div>
-                );
-            })}
-        </div>
-    </div>);
+              </div>
+            );
+        }) }
+      </div>
+  </div>);
 }
 
 function ProductImg(props) {
-    return (<div className='product-album-product-img'>
-        <img alt={ props.alt } src={ props.src }></img>
-    </div>);
+    return (
+      <div className='product-album-product-img'>
+        <img alt={ props.alt } src={ props.src } />
+      </div>
+    );
 }
 
 function ProductAlbum(props) {
