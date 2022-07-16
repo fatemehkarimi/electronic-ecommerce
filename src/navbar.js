@@ -6,16 +6,10 @@ import './navbar.css';
 import logo from './icons/logo.svg';
 
 function BottomNavBar({ menuOptions }) {
-  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
-
   return (
     <div className="navbar-bottom">
-      <div
-       tabIndex={ 0 }
-       className="navbar-hamburger-wrapper"
-       onClick={ () => setIsHamburgerOpen(!isHamburgerOpen) }
-       onBlur={ () => setIsHamburgerOpen(false) }>
-        <Hamburger options={ menuOptions } isOpen={ isHamburgerOpen } />
+      <div className="navbar-hamburger-wrapper">
+        <Hamburger options={ menuOptions } />
         <span>Menu</span>
       </div>
     </div>
