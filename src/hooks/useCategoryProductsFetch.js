@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import API from "../API";
 import PConst from "../productConstants";
 
@@ -7,6 +7,7 @@ export const useCategoryProductsFetch = (categoryId, pageNum = 1) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const prevCategoryId = useRef(null);
 
   useEffect(() => {
     setProducts([]);
@@ -23,7 +24,11 @@ export const useCategoryProductsFetch = (categoryId, pageNum = 1) => {
           return;
         }
 
-        var categoryProducts = [...products];
+        var categoryProducts = [];
+        if(prevCategoryId.current == id)
+          categoryProducts = [...products];
+        prevCategoryId.current = id;
+
         result["products"].forEach((item) => {
           var productInfo = {};
 
