@@ -12,116 +12,118 @@ import './productDetail.css';
 
 
 const LoadingCover = () => (
-    <div className='product-detail-loading-cover'>
-        <Spinner />
-    </div>
+  <div className='product-detail-loading-cover'>
+    <Spinner />
+  </div>
 );
 
 const LazyAlsoViewed = React.lazy(() => {
-    return Promise.all([
-        import('./fetcherProductCarousel'),
-        new Promise(resolve => setTimeout(resolve, 2000))
-    ]).then(([moduleExports]) => moduleExports);
+  return Promise.all([
+    import('./fetcherProductCarousel'),
+    new Promise(resolve => setTimeout(resolve, 2000))
+  ]).then(([moduleExports]) => moduleExports);
 });
 
 const LazyAlsoBought = React.lazy(() => {
-    return Promise.all([
-        import('./fetcherProductCarousel'),
-        new Promise(resolve => setTimeout(resolve, 3000))
-    ]).then(([moduleExports]) => moduleExports);
+  return Promise.all([
+    import('./fetcherProductCarousel'),
+    new Promise(resolve => setTimeout(resolve, 3000))
+  ]).then(([moduleExports]) => moduleExports);
 });
 
 
 function ProductDetail(props) {
-    const navigate = useNavigate();
-    const { productId } = useParams();
-    const {product, loading, error} = useProductDetailFetch(productId);
+  const navigate = useNavigate();
+  const { productId } = useParams();
+  const {product, loading, error} = useProductDetailFetch(productId);
 
-    const [emptyProductAlsoViewed, setEmptyProductAlsoViewed] = useState(false);
-    const [emptyProductAlsoBought, setEmptyProductAlsoBought] = useState(false);
+  const [emptyProductAlsoViewed, setEmptyProductAlsoViewed] = useState(false);
+  const [emptyProductAlsoBought, setEmptyProductAlsoBought] = useState(false);
 
-    const handleProductChange = (productKey) => {
-        const path = `/product/${productKey}`;
-        navigate(path);
-    }
+  const handleProductChange = (productKey) => {
+    const path = `/product/${productKey}`;
+    navigate(path);
+  }
 
-    const getShippingInfo = (product) => {
-        var result = {};
-        result[PConst.PRODUCT_FREE_SHIPPING] = 
-            product[PConst.PRODUCT_FREE_SHIPPING];
+  const getShippingInfo = (product) => {
+    var result = {};
+    result[PConst.PRODUCT_FREE_SHIPPING] = 
+      product[PConst.PRODUCT_FREE_SHIPPING];
 
-        result[PConst.PRODUCT_SHIPPING_COST] = 
-            product[PConst.PRODUCT_SHIPPING_COST];
+    result[PConst.PRODUCT_SHIPPING_COST] = 
+      product[PConst.PRODUCT_SHIPPING_COST];
 
-        result[PConst.PRODUCT_SHIPPING_WEIGHT] = 
-            product[PConst.PRODUCT_SHIPPING_WEIGHT];
+    result[PConst.PRODUCT_SHIPPING_WEIGHT] = 
+      product[PConst.PRODUCT_SHIPPING_WEIGHT];
 
-        result[PConst.PRODUCT_SHIPPING_LEVELS_OF_SERVICE] = 
-            product[PConst.PRODUCT_SHIPPING_LEVELS_OF_SERVICE];
-        
-        return result;
-    }
+    result[PConst.PRODUCT_SHIPPING_LEVELS_OF_SERVICE] = 
+      product[PConst.PRODUCT_SHIPPING_LEVELS_OF_SERVICE];
+    
+    return result;
+  }
 
-    return (<div className='product-detail'>
+  return (
+    <div className='product-detail'>
+      {
+        loading && product ? <LoadingCover /> : undefined
+      }
+      {
+        loading && !product ? <div>Loading</div> : undefined
+      }
+      <div className="product-detail-info">
         {
-            loading && product ? <LoadingCover /> : undefined
+          product ?
+          <>
+            <div className="product-detail-left-col">
+              <ProductAlbum
+                images={ product[PConst.PRODUCT_IMAGES] }
+                minWidth={ 500 }
+                minHeight={ 500 } />
+            </div>
+            <div className="product-detail-middle-col">
+              <ProductInfo
+              info={ product }
+              onProductVariantChange={ handleProductChange } />
+            </div>
+            <div className='product-detail-right-col'>
+              <BuyBox
+                productKey={ productId }
+                shipping={ getShippingInfo(product) }
+                price={ product[PConst.PRODUCT_REGULAR_PRICE] }
+                availability={ product[PConst.PRODUCT_INSTORE_AVAILABILITY] } />
+            </div>
+          </>
+          :
+          undefined
         }
-        {
-            loading && !product ? <div>Loading</div> : undefined
-        }
-        <div className="product-detail-info">
-            {
-                product ?
-                <>
-                    <div className="product-detail-left-col">
-                        <ProductAlbum
-                         images={ product[PConst.PRODUCT_IMAGES] }
-                         minWidth={ 500 }
-                         minHeight={ 500 } />
-                    </div>
-                    <div className="product-detail-middle-col">
-                        <ProductInfo
-                        info={ product }
-                        onProductVariantChange={ handleProductChange } />
-                    </div>
-                    <div className='product-detail-right-col'>
-                        <BuyBox
-                         productKey={ productId }
-                         shipping={ getShippingInfo(product) }
-                         price={ product[PConst.PRODUCT_REGULAR_PRICE] }
-                         availability={ product[PConst.PRODUCT_INSTORE_AVAILABILITY] } />
-                    </div>
-                </>
-                :
-                undefined
-            }
-        </div>
-        { (product && !emptyProductAlsoViewed) ?
-            <Suspense fallback={ <Spinner /> }>
-                <div className='product-detail-recommends'>
-                    <h2>Customers also viewed these products</h2>
-                    <LazyAlsoViewed
-                    fetch={ useAlsoViewedFetch }
-                    productKey={ productId }
-                    onEmpty={ setEmptyProductAlsoViewed } />
-                </div>
-            </Suspense>
-            : undefined
-        }
-        {
-            product && !emptyProductAlsoBought ?
-            <Suspense fallback={ <Spinner /> }>
-                <div className='product-detail-recommends'>
-                    <h2>Frequently bought togather</h2>
-                    <LazyAlsoBought
-                    fetch={ useAlsoBoughtFetch }
-                    productKey={ productId }
-                    onEmpty={ setEmptyProductAlsoBought } />
-                </div>
-            </Suspense>
-            : undefined
-        }
-    </div>);
+      </div>
+      { (product && !emptyProductAlsoViewed) ?
+        <Suspense fallback={ <Spinner /> }>
+          <div className='product-detail-recommends'>
+            <h2>Customers also viewed these products</h2>
+            <LazyAlsoViewed
+            fetch={ useAlsoViewedFetch }
+            productKey={ productId }
+            onEmpty={ setEmptyProductAlsoViewed } />
+          </div>
+        </Suspense>
+        : undefined
+      }
+      {
+        product && !emptyProductAlsoBought ?
+        <Suspense fallback={ <Spinner /> }>
+          <div className='product-detail-recommends'>
+            <h2>Frequently bought togather</h2>
+            <LazyAlsoBought
+            fetch={ useAlsoBoughtFetch }
+            productKey={ productId }
+            onEmpty={ setEmptyProductAlsoBought } />
+          </div>
+        </Suspense>
+        : undefined
+      }
+  </div>
+  );
 }
 
 export default ProductDetail;
