@@ -9,6 +9,7 @@ import BuyBox from './buyBox';
 import Spinner from './components/spinner/spinner';
 import PConst from './productConstants';
 import './productDetail.css';
+import NavBar from './navbar';
 
 
 const LoadingCover = () => (
@@ -64,6 +65,7 @@ function ProductDetail(props) {
 
   return (
     <div className='product-detail'>
+      <NavBar />
       {
         loading && product ? <LoadingCover /> : undefined
       }
