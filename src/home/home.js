@@ -1,6 +1,8 @@
 import React from "react";
 import { useMostViewedFetch } from "../hooks/useMostViewedFetch";
 import { useTrendingFetch } from '../hooks/useTrendingFetch';
+import { useGeneralProductFetch } from "../hooks/useGeneralProductFetch";
+import API from "../API";
 
 import NavBar from "../navbar";
 import Banner from "../components/banner/banner";
@@ -17,7 +19,8 @@ import poster5 from '../images/poster5.jpg';
 
 
 function TrendingProducts() {
-  const { products, loading, error } = useTrendingFetch();
+  const { products, loading, error } = 
+    useGeneralProductFetch(API.fetchTrending, []);
 
   return (
     <>
@@ -35,7 +38,9 @@ function TrendingProducts() {
 
 
 function MostViewedProducts() {
-  const { products, error, loading } = useMostViewedFetch();
+  const { products, loading, error } = 
+    useGeneralProductFetch(API.fetchMostViewed, []);
+
   if(error) return <></>;
 
   return (
