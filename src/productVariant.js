@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DropDown from './components/dropdown/dropdown';
 import { capitalize } from './utils';
-import APIConst from "./apiConstants";
 import PConst from './productConstants';
 import "./productVariant.css";
 
