@@ -1,12 +1,11 @@
-import React from "react";
-import { useMostViewedFetch } from "../hooks/useMostViewedFetch";
-import { useTrendingFetch } from '../hooks/useTrendingFetch';
+import React, { useRef } from "react";
 import { useGeneralProductFetch } from "../hooks/useGeneralProductFetch";
 import API from "../API";
 
 import NavBar from "../navbar";
 import Banner from "../components/banner/banner";
 import ProductCarousel from "../productCarousel";
+import Spinner from "../components/spinner/spinner";
 
 import './home.css';
 import './../globalStyle.css';
@@ -19,8 +18,11 @@ import poster5 from '../images/poster5.jpg';
 
 
 function TrendingProducts() {
+  const trendingReqParams = useRef([]);
   const { products, loading, error } = 
-    useGeneralProductFetch(API.fetchTrending, []);
+    useGeneralProductFetch(API.fetchTrending, trendingReqParams.current);
+
+  if(loading) return <Spinner />
 
   return (
     <>
@@ -38,10 +40,12 @@ function TrendingProducts() {
 
 
 function MostViewedProducts() {
+  const mostViewedReqParams = useRef([]);
   const { products, loading, error } = 
-    useGeneralProductFetch(API.fetchMostViewed, []);
+    useGeneralProductFetch(API.fetchMostViewed, mostViewedReqParams.current);
 
   if(error) return <></>;
+  if(loading) return <Spinner />;
 
   return (
     <>

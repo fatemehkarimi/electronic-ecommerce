@@ -14,6 +14,7 @@ export const useGeneralProductFetch = (request, params) => {
         setLoading(true);
 
         const result = await request(...params);
+
         if(generalRes.ERROR in result) {
           setError(true);
           return;
@@ -51,7 +52,6 @@ export const useGeneralProductFetch = (request, params) => {
         setProducts(newProducts);
 
       } catch(error) {
-        console.log(error);
         setError(true);
       }
 
