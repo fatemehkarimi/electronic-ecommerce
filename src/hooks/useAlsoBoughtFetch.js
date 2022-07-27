@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import API from '../API';
-import PConst from '../productConstants';
+import PConst from '../appConstants';
 
 export const useAlsoBoughtFetch = (productKey) => {
     const [products, setProducts] = useState();

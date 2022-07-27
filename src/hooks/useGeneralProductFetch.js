@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { generalRes, productShortRes } from "../apiConstants";
-import PConst from '../productConstants';
+import PConst from '../appConstants';
 
 export const useGeneralProductFetch = (request, params) => {
   const [products, setProducts] = useState();

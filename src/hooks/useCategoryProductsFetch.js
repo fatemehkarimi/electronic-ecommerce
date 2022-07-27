@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import API from "../API";
-import PConst from "../productConstants";
+import PConst from "../appConstants";
 
 export const useCategoryProductsFetch = (categoryId, pageNum = 1) => {
   const [products, setProducts] = useState([]);

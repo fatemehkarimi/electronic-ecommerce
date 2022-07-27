@@ -7,7 +7,7 @@ import Card from "../components/card/card";
 import Review from "../components/review/review";
 import Spinner from "../components/spinner/spinner";
 import { formatLongString } from "./../utils";
-import PConst from "../productConstants";
+import PConst from "../appConstants";
 import "./categoryProductList.css";
 
 function CustomCard({ product }) {

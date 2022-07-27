@@ -7,7 +7,7 @@ import ProductAlbum from "./productAlbum";
 import ProductInfo from "./productInfo";
 import BuyBox from './buyBox';
 import Spinner from './components/spinner/spinner';
-import PConst from './productConstants';
+import PConst from './appConstants';
 import './productDetail.css';
 import NavBar from './navbar';
 

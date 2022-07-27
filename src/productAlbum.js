@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PConst from './productConstants';
+import PConst from './appConstants';
 import './productAlbum.css';
 
 function Overview(props) {

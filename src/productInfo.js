@@ -2,7 +2,7 @@ import React from 'react';
 import Review from './components/review/review';
 import ProductFeature from './productFeature';
 import ProductVariant from './productVariant';
-import PConst from "./productConstants";
+import PConst from "./appConstants";
 import './productInfo.css';
 
 function Banner(props) {

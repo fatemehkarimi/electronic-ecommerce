@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductWarranty from './productWarranty';
-import PConst from './productConstants';
+import PConst from './appConstants';
 import './buyBox.css';
 
 function Price({price}) {

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowDimensions } from './hooks/useWindowDimensions';
 import Review from './components/review/review';
-import PConst from './productConstants';
+import PConst from './appConstants';
 import Card from './components/card/card';
 import Grid from './components/grid/grid';
 import { formatLongString } from './utils';

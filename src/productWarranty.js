@@ -1,5 +1,5 @@
 import { useProductWarrantyFetch } from './hooks/useProductDetailFetch';
-import PConst from './productConstants';
+import PConst from './appConstants';
 import './productWarranty.css';
 
 function PlanOption({ plan }) {

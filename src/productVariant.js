@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DropDown from './components/dropdown/dropdown';
 import { capitalize } from './utils';
-import PConst from './productConstants';
+import PConst from './appConstants';
 import "./productVariant.css";
 
 
