@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useGeneralProductFetch } from "../hooks/useGeneralProductFetch";
 import API from "../API";
 
-import NavBar from "../navbar";
+import NavBar from '../components/navbar/navbar';
 import Banner from "../components/banner/banner";
 import ProductCarousel from "../productCarousel";
 import Spinner from "../components/spinner/spinner";

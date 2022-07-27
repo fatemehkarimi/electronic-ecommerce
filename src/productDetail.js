@@ -7,9 +7,9 @@ import ProductAlbum from "./productAlbum";
 import ProductInfo from "./productInfo";
 import BuyBox from './buyBox';
 import Spinner from './components/spinner/spinner';
+import NavBar from './components/navbar/navbar';
 import PConst from './appConstants';
 import './productDetail.css';
-import NavBar from './navbar';
 
 
 const LoadingCover = () => (

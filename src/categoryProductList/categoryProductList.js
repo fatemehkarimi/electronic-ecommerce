@@ -1,7 +1,7 @@
 import React, { useState, useRef, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { useCategoryProductsFetch } from "../hooks/useCategoryProductsFetch";
-import NavBar from "../navbar";
+import NavBar from '../components/navbar/navbar';
 import Grid from "../components/grid/grid";
 import Card from "../components/card/card";
 import Review from "../components/review/review";
